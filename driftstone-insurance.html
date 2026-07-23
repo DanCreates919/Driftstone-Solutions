@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <title>Driftstone Insurance Solutions — Independent Insurance, North County San Diego</title>
 <meta name="description" content="Driftstone Insurance Solutions is an independent insurance agency in North County San Diego serving all of California. We compare coverage from multiple A-rated carriers for businesses and families.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,400;9..144,500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
+  color-scheme:light;
   --pine:#14484A;
   --ink:#0C2D2F;
   --sea:#2C7A74;
@@ -122,7 +124,7 @@ section{padding:88px 0}
 .quote-sec .eyebrow{color:#8FC7BE}
 .quote-sec h2{color:var(--paper)}
 .quote-sec .lede{color:rgba(246,244,236,.78)}
-.quote-shell{background:var(--paper);color:var(--ink);border-radius:20px;padding:44px;margin-top:44px;max-width:720px;box-shadow:0 30px 70px -30px rgba(0,0,0,.45)}
+.quote-shell{background:var(--paper);color:var(--ink);border-radius:20px;padding:44px;margin-top:44px;max-width:720px;box-shadow:0 30px 70px -30px rgba(0,0,0,.45);scroll-margin-top:90px}
 .form-progress{display:flex;align-items:center;gap:14px;margin-bottom:34px}
 .prog-stone{width:34px;height:14px;border-radius:100px;background:var(--sand);transition:background .3s,width .3s}
 .prog-stone.done{background:var(--sea)}
@@ -164,6 +166,11 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 /* ---------- Reveal on scroll ---------- */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
+
+/* iOS Safari mis-renders Fraunces' optical-size axis (distorted glyphs); pin it off on iOS only */
+@supports (-webkit-touch-callout:none){
+  h1,h2,h3,.brand-name,.step-num,.foot-brand,.foot-tag{font-optical-sizing:none;font-synthesis:none}
+}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
@@ -227,7 +234,7 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
       <h1>Coverage that stands <em>steady</em>, whatever the tide.</h1>
       <p class="lede">Driftstone is an independent agency. We compare coverage from multiple A-rated carriers and recommend what's right for your business or your family — because we work for you, not an insurance company.</p>
       <div class="hero-actions">
-        <a class="btn" href="#quote">Request a quote</a>
+        <a class="btn" href="#quote-start">Request a quote</a>
         <a class="quiet-link" href="#why">See how independent works</a>
       </div>
     </div>
@@ -385,7 +392,7 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
     <h2 class="rv">Start the conversation.</h2>
     <p class="lede rv">Three quick steps. No obligation, no spam — just options from carriers that fit, usually within one business day.</p>
 
-    <div class="quote-shell rv">
+    <div class="quote-shell rv" id="quote-start">
       <div class="form-progress" aria-hidden="true">
         <div class="prog-stone active" id="ps1"></div>
         <div class="prog-stone" id="ps2"></div>
@@ -511,15 +518,15 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="tel:+17600000000">(760) 000-0000</a></li>
-          <li><a href="mailto:hello@driftstoneinsurance.com">hello@driftstoneinsurance.com</a></li>
+          <li><a href="tel:+14423595633">442-359-5633</a></li>
+          <li><a href="mailto:zach@driftstoneinsurance.com">zach@driftstoneinsurance.com</a></li>
           <li>North County San Diego, CA</li>
         </ul>
       </div>
     </div>
     <div class="foot-legal">
       <span>&copy; 2026 Driftstone Insurance Solutions. All rights reserved.</span>
-      <span>CA License #0000000</span>
+      <span>CA License #4168429</span>
     </div>
   </div>
 </footer>
@@ -532,7 +539,14 @@ menuBtn.addEventListener('click',()=>{
   const open=navLinks.classList.toggle('open');
   menuBtn.setAttribute('aria-expanded',open);
 });
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+function closeMenu(){
+  navLinks.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded','false');
+}
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('click',e=>{
+  if(navLinks.classList.contains('open')&&!navLinks.contains(e.target)&&!menuBtn.contains(e.target))closeMenu();
+});
 
 // ---- Scroll reveal ----
 const io=new IntersectionObserver(es=>{
