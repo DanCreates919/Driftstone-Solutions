@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Driftstone Insurance Solutions — Independent Insurance, North County San Diego</title>
+<meta name="description" content="Driftstone Insurance Solutions is an independent insurance agency in North County San Diego serving all of California. We compare coverage from multiple A-rated carriers for businesses and families.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,400;9..144,500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#14484A;
+  --ink:#0C2D2F;
+  --sea:#2C7A74;
+  --stone:#8E9490;
+  --paper:#F6F4EC;
+  --sand:#EAE6D8;
+  --white:#FDFCF8;
+  --display:'Fraunces',Georgia,serif;
+  --body:'Figtree',-apple-system,sans-serif;
+  --max:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sea);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sea)}
+h1,h2,h3{font-family:var(--display);font-weight:340;line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(30px,4.2vw,44px);margin:14px 0 18px}
+.lede{font-size:clamp(17px,2vw,19.5px);color:#3A5254;max-width:60ch}
+
+/* ---------- Nav ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(246,244,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,72,74,.12)}
+nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand svg{width:40px;height:40px;flex-shrink:0}
+.brand-name{font-family:var(--display);font-weight:500;font-size:19px;letter-spacing:.01em;color:var(--pine);line-height:1.05}
+.brand-name small{display:block;font-family:var(--body);font-weight:600;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{text-decoration:none;font-weight:500;font-size:15px;color:var(--ink);transition:color .18s}
+.nav-links a:hover{color:var(--sea)}
+.btn{display:inline-block;background:var(--pine);color:var(--white);text-decoration:none;font-weight:600;font-size:15px;padding:13px 26px;border-radius:100px;border:none;cursor:pointer;transition:background .18s,transform .18s;font-family:var(--body)}
+.btn:hover{background:var(--sea);transform:translateY(-1px)}
+.btn.small{padding:10px 20px;font-size:14px}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--pine);margin:5px 0;transition:.25s}
+
+/* ---------- Hero ---------- */
+.hero{padding:84px 0 60px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px,5.6vw,66px);margin:16px 0 22px;color:var(--pine)}
+.hero h1 em{font-style:italic;font-weight:400}
+.hero-actions{display:flex;align-items:center;gap:26px;margin-top:34px;flex-wrap:wrap}
+.quiet-link{font-weight:600;font-size:15px;text-decoration:none;color:var(--pine);border-bottom:2px solid var(--sand);padding-bottom:3px;transition:border-color .18s}
+.quiet-link:hover{border-color:var(--sea)}
+.cairn-stage{display:flex;justify-content:center}
+.cairn-stage svg{width:min(340px,80%);height:auto}
+.cairn-stone{opacity:0;transform:translateY(-26px);animation:settle .7s cubic-bezier(.2,.7,.3,1.1) forwards}
+.cairn-stone:nth-child(1){animation-delay:.15s}
+.cairn-stone:nth-child(2){animation-delay:.35s}
+.cairn-stone:nth-child(3){animation-delay:.55s}
+.cairn-stone:nth-child(4){animation-delay:.75s}
+.cairn-stone:nth-child(5){animation-delay:.95s}
+@keyframes settle{to{opacity:1;transform:translateY(0)}}
+.wave-arc{opacity:0;animation:fadein 1s ease .9s forwards}
+@keyframes fadein{to{opacity:1}}
+
+/* ---------- Trust strip ---------- */
+.strip{border-top:1px solid rgba(20,72,74,.12);border-bottom:1px solid rgba(20,72,74,.12);background:var(--white)}
+.strip-inner{display:flex;justify-content:space-between;gap:24px;padding:22px 0;flex-wrap:wrap}
+.strip-item{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14.5px;color:var(--pine)}
+.strip-item svg{width:18px;height:18px;flex-shrink:0}
+
+/* ---------- Sections ---------- */
+section{padding:88px 0}
+.split-cards{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:44px}
+.path-card{background:var(--white);border:1px solid rgba(20,72,74,.14);border-radius:18px;padding:42px 38px;position:relative;transition:transform .22s,box-shadow .22s}
+.path-card:hover{transform:translateY(-4px);box-shadow:0 18px 44px -18px rgba(12,45,47,.25)}
+.path-card h3{font-size:27px;margin:14px 0 10px;color:var(--pine)}
+.path-card p{color:#3A5254;margin-bottom:20px}
+.cov-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px 16px;margin:22px 0 28px}
+.cov-list li{font-size:14.5px;font-weight:500;color:var(--ink);display:flex;align-items:center;gap:8px}
+.cov-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sea);flex-shrink:0}
+
+/* ---------- Industries ---------- */
+.alt{background:var(--sand)}
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.ind-card{background:var(--paper);border:1px solid rgba(20,72,74,.14);border-radius:14px;padding:28px 26px;transition:border-color .2s,transform .2s}
+.ind-card:hover{border-color:var(--sea);transform:translateY(-3px)}
+.ind-card h3{font-size:20px;font-family:var(--body);font-weight:600;color:var(--pine);margin-bottom:8px}
+.ind-card p{font-size:14.5px;color:#3A5254;line-height:1.55}
+
+/* ---------- Why independent ---------- */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:44px}
+.comp-col{border-radius:18px;padding:38px 34px}
+.comp-col.them{background:var(--white);border:1px solid rgba(20,72,74,.14)}
+.comp-col.us{background:var(--pine);color:var(--paper)}
+.comp-col h3{font-size:23px;margin-bottom:20px}
+.comp-col.us h3{color:var(--paper)}
+.comp-col ul{list-style:none;display:grid;gap:14px}
+.comp-col li{display:flex;gap:12px;font-size:15.5px;line-height:1.5}
+.comp-col li svg{width:19px;height:19px;flex-shrink:0;margin-top:3px}
+.comp-col.them li{color:#4A5F61}
+.comp-tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:16px}
+.them .comp-tag{background:var(--sand);color:var(--stone)}
+.us .comp-tag{background:rgba(246,244,236,.16);color:var(--paper)}
+
+/* ---------- Process ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
+.step{position:relative;padding-top:18px}
+.step-num{font-family:var(--display);font-size:52px;font-weight:340;color:var(--sea);opacity:.45;line-height:1}
+.step h3{font-size:20px;font-family:var(--body);font-weight:600;margin:12px 0 8px;color:var(--pine)}
+.step p{font-size:15px;color:#3A5254}
+
+/* ---------- Quote form ---------- */
+.quote-sec{background:var(--pine);color:var(--paper)}
+.quote-sec .eyebrow{color:#8FC7BE}
+.quote-sec h2{color:var(--paper)}
+.quote-sec .lede{color:rgba(246,244,236,.78)}
+.quote-shell{background:var(--paper);color:var(--ink);border-radius:20px;padding:44px;margin-top:44px;max-width:720px;box-shadow:0 30px 70px -30px rgba(0,0,0,.45)}
+.form-progress{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+.prog-stone{width:34px;height:14px;border-radius:100px;background:var(--sand);transition:background .3s,width .3s}
+.prog-stone.done{background:var(--sea)}
+.prog-stone.active{background:var(--pine);width:52px}
+.prog-label{font-size:13px;font-weight:600;color:var(--stone);margin-left:auto}
+.fstep{display:none}
+.fstep.on{display:block;animation:fadeup .35s ease}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fstep h3{font-size:24px;color:var(--pine);margin-bottom:22px}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chip{border:1.5px solid rgba(20,72,74,.2);background:var(--white);border-radius:14px;padding:20px 18px;cursor:pointer;text-align:left;font-family:var(--body);transition:border-color .18s,background .18s}
+.chip strong{display:block;font-size:16px;color:var(--pine);margin-bottom:3px}
+.chip span{font-size:13.5px;color:var(--stone)}
+.chip.sel{border-color:var(--pine);background:#EEF3EE;box-shadow:inset 0 0 0 1px var(--pine)}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13.5px;font-weight:600;color:var(--pine);margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1.5px solid rgba(20,72,74,.2);border-radius:11px;font-family:var(--body);font-size:15.5px;background:var(--white);color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--sea);box-shadow:0 0 0 3px rgba(44,122,116,.15)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}
+.back-link{background:none;border:none;font-family:var(--body);font-weight:600;font-size:14.5px;color:var(--stone);cursor:pointer;padding:8px 0}
+.back-link:hover{color:var(--pine)}
+.form-done{text-align:center;padding:30px 10px}
+.form-done svg{width:60px;height:60px;margin:0 auto 20px}
+.form-done h3{font-size:26px;color:var(--pine);margin-bottom:10px}
+.form-done p{color:#3A5254;max-width:42ch;margin:0 auto}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;font-size:14.5px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-grid h4{color:var(--paper);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.foot-grid ul{list-style:none;display:grid;gap:9px}
+.foot-grid a{text-decoration:none;transition:color .18s}
+.foot-grid a:hover{color:#8FC7BE}
+.foot-brand{font-family:var(--display);font-size:21px;color:var(--paper);margin-bottom:10px}
+.foot-tag{font-style:italic;font-family:var(--display);color:#8FC7BE;margin-bottom:16px}
+.foot-legal{border-top:1px solid rgba(246,244,236,.14);padding-top:26px;font-size:13px;color:rgba(246,244,236,.5);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* ---------- Reveal on scroll ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+  .cairn-stone,.wave-arc{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+  .cairn-stage{order:-1}
+  .cairn-stage svg{width:200px}
+  .split-cards,.compare,.ind-grid,.steps{grid-template-columns:1fr}
+  .nav-links{position:fixed;inset:74px 0 auto 0;background:var(--paper);flex-direction:column;align-items:flex-start;padding:26px 24px 32px;gap:20px;border-bottom:1px solid rgba(20,72,74,.15);transform:translateY(-130%);transition:transform .3s ease;box-shadow:0 20px 40px -20px rgba(0,0,0,.2)}
+  .nav-links.open{transform:none}
+  .menu-btn{display:block}
+  section{padding:64px 0}
+  .quote-shell{padding:30px 22px}
+  .chips,.frow{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .strip-inner{justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top" aria-label="Driftstone Insurance Solutions home">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M55 34c0 14-10.5 24-24.5 24C17 58 6 47.5 6 34.5 6 19 18 7 33 7c8 0 15 3.4 19.6 9-4.2-3.6-9.8-5.6-15.6-5.6-12.7 0-22.6 9.8-22.6 22.4 0 11.4 8.7 20.3 19.9 20.3 10.9 0 19.3-8 19.3-18.6 0-2.4-.4-4.6-1.2-6.6.9 1.9 2.6 3.7 2.6 6.1z" fill="#14484A"/>
+          <ellipse cx="31" cy="44" rx="11" ry="4.6" fill="#6E7672"/>
+          <ellipse cx="31" cy="36.6" rx="8.6" ry="3.9" fill="#8E9490"/>
+          <ellipse cx="31" cy="30.4" rx="6.4" ry="3.2" fill="#A9AEA9"/>
+          <ellipse cx="31" cy="25.2" rx="4.4" ry="2.5" fill="#C2C6C0"/>
+        </svg>
+        <span class="brand-name">Driftstone<small>Insurance Solutions</small></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#business">Business</a></li>
+        <li><a href="#personal">Personal</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#why">Why independent</a></li>
+        <li><a class="btn small" href="#quote">Request a quote</a></li>
+      </ul>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Independent insurance · North County San Diego · Serving all of California</p>
+      <h1>Coverage that stands <em>steady</em>, whatever the tide.</h1>
+      <p class="lede">Driftstone is an independent agency. We compare coverage from multiple A-rated carriers and recommend what's right for your business or your family — because we work for you, not an insurance company.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#quote">Request a quote</a>
+        <a class="quiet-link" href="#why">See how independent works</a>
+      </div>
+    </div>
+    <div class="cairn-stage" aria-hidden="true">
+      <svg viewBox="0 0 300 300" fill="none">
+        <path class="wave-arc" d="M258 150c0 62-46 106-108 106C88 256 40 210 40 152 40 84 94 30 160 30c34 0 64 14 84 37-18-15-42-24-67-24-56 0-99 43-99 98 0 50 38 89 87 89 48 0 85-35 85-82 0-10-1.6-19-4.8-27 4.2 8 12.8 18 12.8 29z" fill="#14484A" opacity=".16"/>
+        <ellipse class="cairn-stone" cx="150" cy="218" rx="62" ry="24" fill="#14484A"/>
+        <ellipse class="cairn-stone" cx="150" cy="180" rx="48" ry="20" fill="#2C7A74"/>
+        <ellipse class="cairn-stone" cx="150" cy="148" rx="37" ry="16" fill="#8E9490"/>
+        <ellipse class="cairn-stone" cx="150" cy="122" rx="27" ry="12.5" fill="#A9AEA9"/>
+        <ellipse class="cairn-stone" cx="150" cy="101" rx="17.5" ry="9" fill="#C2C6C0"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST STRIP ================= -->
+<div class="strip">
+  <div class="wrap strip-inner">
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2C7A74" stroke-width="2.2" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+      Multiple A-rated carriers, one conversation
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2C7A74" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      Quotes back fast — usually within one business day
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2C7A74" stroke-width="2.2" aria-hidden="true"><path d="M12 21s-7-4.6-7-10.2C5 7 8 5 10.5 5c1 0 1.5.4 1.5.4S12.5 5 13.5 5C16 5 19 7 19 10.8 19 16.4 12 21 12 21z"/></svg>
+      Based in North County, licensed across California
+    </div>
+  </div>
+</div>
+
+<!-- ================= TWO PATHS ================= -->
+<section id="business">
+  <div class="wrap">
+    <p class="eyebrow rv">What we cover</p>
+    <h2 class="rv">Two doors. One standard of advice.</h2>
+    <p class="lede rv">Whether you're protecting a company you built or the home your family lives in, the approach is the same: understand the risk first, then shop the market for it.</p>
+    <div class="split-cards">
+      <div class="path-card rv">
+        <p class="eyebrow">For businesses</p>
+        <h3>Business insurance</h3>
+        <p>From a single work truck to a multi-location operation, we build commercial programs line by line — and re-shop them at renewal so your pricing stays honest.</p>
+        <ul class="cov-list">
+          <li>General liability</li>
+          <li>Commercial property</li>
+          <li>Workers' compensation</li>
+          <li>Commercial auto</li>
+          <li>Professional liability</li>
+          <li>Cyber liability</li>
+          <li>Business owner's policy</li>
+          <li>Commercial umbrella</li>
+        </ul>
+        <a class="btn" href="#quote" data-preselect="business">Get a business quote</a>
+      </div>
+      <div class="path-card rv" id="personal">
+        <p class="eyebrow">For families</p>
+        <h3>Home &amp; auto</h3>
+        <p>California's personal insurance market is tight — carriers are picky, and rates swing hard. Independent access to multiple markets matters more here than it ever has.</p>
+        <ul class="cov-list">
+          <li>Homeowners</li>
+          <li>Auto</li>
+          <li>Renters</li>
+          <li>Condo</li>
+          <li>Landlord / rental property</li>
+          <li>Personal umbrella</li>
+          <li>Boat &amp; RV</li>
+          <li>Home + auto bundles</li>
+        </ul>
+        <a class="btn" href="#quote" data-preselect="home">Get a personal quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INDUSTRIES ================= -->
+<section class="alt" id="industries">
+  <div class="wrap">
+    <p class="eyebrow rv">Industries we serve</p>
+    <h2 class="rv">Built around how California works.</h2>
+    <p class="lede rv">Every industry carries its own risk profile — and its own carrier appetite. We know which markets want your class of business, so you're not paying a generalist's price.</p>
+    <div class="ind-grid">
+      <div class="ind-card rv"><h3>Construction &amp; trades</h3><p>GL, workers' comp, commercial auto, tools &amp; equipment, and bonds for contractors, electricians, plumbers, and HVAC.</p></div>
+      <div class="ind-card rv"><h3>Restaurants &amp; hospitality</h3><p>Property, liquor liability, workers' comp, and spoilage coverage for restaurants, cafés, breweries, and caterers.</p></div>
+      <div class="ind-card rv"><h3>Professional services</h3><p>E&amp;O, cyber, and office packages for consultants, agencies, financial professionals, and healthcare practices.</p></div>
+      <div class="ind-card rv"><h3>Retail &amp; e-commerce</h3><p>Storefront property, product liability, inventory, and business interruption for shops that sell in person and online.</p></div>
+      <div class="ind-card rv"><h3>Real estate &amp; property</h3><p>Landlord packages, habitational programs, and umbrella coverage for investors, property managers, and HOAs.</p></div>
+      <div class="ind-card rv"><h3>Transportation &amp; logistics</h3><p>Commercial auto, cargo, and fleet programs for delivery operations, haulers, and owner-operators.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY INDEPENDENT ================= -->
+<section id="why">
+  <div class="wrap">
+    <p class="eyebrow rv">Why independent</p>
+    <h2 class="rv">The agent's loyalty should be to you.</h2>
+    <p class="lede rv">A captive agent can only sell one company's products, at that company's price. An independent agent shops the market on your behalf. It's a structural difference — and it shows up in your premium.</p>
+    <div class="compare">
+      <div class="comp-col them rv">
+        <span class="comp-tag">Captive agency</span>
+        <h3>One carrier. One price.</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#8E9490" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg>Represents a single insurance company</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#8E9490" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg>Quotes only that company's rate — take it or leave it</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#8E9490" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg>If the carrier tightens appetite, you start over elsewhere</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#8E9490" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg>Renewal increases with nowhere to move</li>
+        </ul>
+      </div>
+      <div class="comp-col us rv">
+        <span class="comp-tag">Driftstone — independent</span>
+        <h3>Many carriers. Your side of the table.</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#8FC7BE" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg>Compares multiple A-rated carriers on every quote</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#8FC7BE" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg>Matches your risk to the carrier that actually wants it</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#8FC7BE" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg>If the market shifts, we move your policy — you keep your agent</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#8FC7BE" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg>Re-shops your program at renewal, every year</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="alt">
+  <div class="wrap">
+    <p class="eyebrow rv">How it works</p>
+    <h2 class="rv">Three steps. No pressure at any of them.</h2>
+    <div class="steps">
+      <div class="step rv">
+        <div class="step-num">1</div>
+        <h3>Tell us what you're protecting</h3>
+        <p>A short conversation or the form below. We ask about your business, your property, your drivers — the real risk, not just the checkbox version.</p>
+      </div>
+      <div class="step rv">
+        <div class="step-num">2</div>
+        <h3>We shop the market</h3>
+        <p>We take your risk to multiple A-rated carriers and come back with options — usually within one business day — explained in plain English, side by side.</p>
+      </div>
+      <div class="step rv">
+        <div class="step-num">3</div>
+        <h3>You choose, we handle the rest</h3>
+        <p>Binding, certificates, carrier paperwork, and every renewal after. When something changes, you call one number: ours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUOTE FORM ================= -->
+<section class="quote-sec" id="quote">
+  <div class="wrap">
+    <p class="eyebrow rv">Request a quote</p>
+    <h2 class="rv">Start the conversation.</h2>
+    <p class="lede rv">Three quick steps. No obligation, no spam — just options from carriers that fit, usually within one business day.</p>
+
+    <div class="quote-shell rv">
+      <div class="form-progress" aria-hidden="true">
+        <div class="prog-stone active" id="ps1"></div>
+        <div class="prog-stone" id="ps2"></div>
+        <div class="prog-stone" id="ps3"></div>
+        <span class="prog-label" id="progLabel">Step 1 of 3</span>
+      </div>
+
+      <form id="quoteForm" novalidate>
+        <!-- STEP 1 -->
+        <div class="fstep on" data-step="1">
+          <h3>What do you need covered?</h3>
+          <div class="chips" role="group" aria-label="Coverage type">
+            <button type="button" class="chip" data-val="business"><strong>Business insurance</strong><span>GL, property, workers' comp, and more</span></button>
+            <button type="button" class="chip" data-val="home"><strong>Home</strong><span>Homeowners, condo, renters, landlord</span></button>
+            <button type="button" class="chip" data-val="auto"><strong>Auto</strong><span>Personal vehicles, boat &amp; RV</span></button>
+            <button type="button" class="chip" data-val="bundle"><strong>Bundle</strong><span>Home + auto, or business + personal</span></button>
+          </div>
+          <div class="form-nav">
+            <span></span>
+            <button type="button" class="btn" id="next1" disabled style="opacity:.5">Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="fstep" data-step="2">
+          <h3>Tell us a little more.</h3>
+          <div class="field" id="bizNameField">
+            <label for="bizname">Business name <span style="color:var(--stone);font-weight:400">(if applicable)</span></label>
+            <input type="text" id="bizname" name="bizname" placeholder="e.g. Coastal Builders Inc.">
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" placeholder="e.g. Oceanside" required>
+            </div>
+            <div class="field">
+              <label for="timeline">When do you need coverage?</label>
+              <select id="timeline" name="timeline">
+                <option>As soon as possible</option>
+                <option>Within 30 days</option>
+                <option>At my next renewal</option>
+                <option>Just comparing rates</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="details">Anything we should know?</label>
+            <textarea id="details" name="details" rows="3" placeholder="Current carrier, what you do, number of vehicles or employees — whatever's useful."></textarea>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="back-link" data-back="1">&larr; Back</button>
+            <button type="button" class="btn" id="next2">Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="fstep" data-step="3">
+          <h3>Where should we send your options?</h3>
+          <div class="frow">
+            <div class="field">
+              <label for="fname">Name</label>
+              <input type="text" id="fname" name="fname" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="pref">Preferred contact</label>
+            <select id="pref" name="pref">
+              <option>Call me</option>
+              <option>Text me</option>
+              <option>Email me</option>
+            </select>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="back-link" data-back="2">&larr; Back</button>
+            <button type="submit" class="btn">Request my quote</button>
+          </div>
+        </div>
+
+        <!-- DONE -->
+        <div class="fstep" data-step="done">
+          <div class="form-done">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <circle cx="32" cy="32" r="30" fill="#EEF3EE" stroke="#2C7A74" stroke-width="2"/>
+              <path d="M20 33l8 8 16-17" stroke="#14484A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>Request received.</h3>
+            <p>We'll review your details and reach out with options — usually within one business day. Thanks for giving an independent agency a look.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Driftstone Insurance Solutions</div>
+        <div class="foot-tag">Protecting what matters.</div>
+        <p>An independent insurance agency based in North County San Diego, proudly serving businesses and families across all of California.</p>
+      </div>
+      <div>
+        <h4>Coverage</h4>
+        <ul>
+          <li><a href="#business">Business insurance</a></li>
+          <li><a href="#personal">Home &amp; auto</a></li>
+          <li><a href="#industries">Industries we serve</a></li>
+          <li><a href="#quote">Request a quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+17600000000">(760) 000-0000</a></li>
+          <li><a href="mailto:hello@driftstoneinsurance.com">hello@driftstoneinsurance.com</a></li>
+          <li>North County San Diego, CA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>&copy; 2026 Driftstone Insurance Solutions. All rights reserved.</span>
+      <span>CA License #0000000</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---- Mobile menu ----
+const menuBtn=document.getElementById('menuBtn');
+const navLinks=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded',open);
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+// ---- Scroll reveal ----
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// ---- Multi-step quote form ----
+let coverage=null;
+const steps=document.querySelectorAll('.fstep');
+const stones={1:document.getElementById('ps1'),2:document.getElementById('ps2'),3:document.getElementById('ps3')};
+const progLabel=document.getElementById('progLabel');
+const next1=document.getElementById('next1');
+
+function showStep(n){
+  steps.forEach(s=>s.classList.toggle('on',s.dataset.step==String(n)));
+  if(n==='done'){
+    Object.values(stones).forEach(s=>{s.classList.remove('active');s.classList.add('done');});
+    progLabel.textContent='Done';
+    return;
+  }
+  for(let i=1;i<=3;i++){
+    stones[i].classList.toggle('done',i<n);
+    stones[i].classList.toggle('active',i===n);
+  }
+  progLabel.textContent='Step '+n+' of 3';
+}
+
+document.querySelectorAll('.chip').forEach(ch=>{
+  ch.addEventListener('click',()=>{
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));
+    ch.classList.add('sel');
+    coverage=ch.dataset.val;
+    next1.disabled=false;next1.style.opacity='1';
+    document.getElementById('bizNameField').style.display=(coverage==='home'||coverage==='auto')?'none':'block';
+  });
+});
+
+next1.addEventListener('click',()=>{if(coverage)showStep(2);});
+document.getElementById('next2').addEventListener('click',()=>{
+  const city=document.getElementById('city');
+  if(!city.value.trim()){city.focus();city.style.borderColor='#B4552D';return;}
+  showStep(3);
+});
+document.querySelectorAll('.back-link').forEach(b=>b.addEventListener('click',()=>showStep(Number(b.dataset.back))));
+
+document.getElementById('quoteForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const req=['fname','phone','email'];
+  for(const id of req){
+    const el=document.getElementById(id);
+    if(!el.value.trim()){el.focus();el.style.borderColor='#B4552D';return;}
+  }
+  showStep('done');
+});
+
+// ---- CTA preselect (business/personal buttons jump to form with type chosen) ----
+document.querySelectorAll('[data-preselect]').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const val=a.dataset.preselect;
+    const chip=document.querySelector('.chip[data-val="'+val+'"]');
+    if(chip)chip.click();
+  });
+});
+</script>
+</body>
+</html>
