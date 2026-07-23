@@ -49,6 +49,8 @@ nav{display:flex;align-items:center;justify-content:space-between;height:var(--h
 .nav-links{display:flex;align-items:center;gap:30px;list-style:none}
 .nav-links a{text-decoration:none;font-weight:500;font-size:15px;color:var(--ink);transition:color .18s}
 .nav-links a:hover{color:var(--sea)}
+/* .nav-links a outranks .btn, so restate the button's text color at higher specificity */
+.nav-links a.btn,.nav-links a.btn:hover{color:var(--white)}
 .btn{display:inline-block;background:var(--pine);color:var(--white);text-decoration:none;font-weight:600;font-size:15px;padding:13px 26px;border-radius:100px;border:none;cursor:pointer;transition:background .18s,transform .18s;font-family:var(--body)}
 .btn:hover{background:var(--sea);transform:translateY(-1px)}
 .btn.small{padding:10px 20px;font-size:14px}
