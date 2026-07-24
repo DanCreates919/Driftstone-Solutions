@@ -117,6 +117,25 @@ section{padding:88px 0}
 .fit .comp-tag{background:var(--sand);color:var(--sea)}
 .us .comp-tag{background:rgba(246,244,236,.16);color:var(--paper)}
 
+/* ---------- Carriers ---------- */
+.carriers{background:var(--white);border-top:1px solid rgba(20,72,74,.12);border-bottom:1px solid rgba(20,72,74,.12);padding:58px 0 64px}
+.carriers h2{font-family:var(--body);font-size:13.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sea);text-align:center;margin:0 0 42px}
+.marquee{overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex;width:max-content;will-change:transform;animation:marquee 35s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.logo-set{list-style:none;display:flex;align-items:center;gap:56px;padding-right:56px;flex:none}
+.logo-set li{width:160px;height:56px;display:flex;align-items:center;justify-content:center;flex:none}
+.logo-set img{max-height:48px;max-width:140px;width:auto;height:auto;object-fit:contain;filter:grayscale(1) opacity(.75);transition:filter .3s ease}
+.logo-set li.lg-wide img{max-width:160px}
+.logo-set li:hover img{filter:grayscale(0) opacity(1)}
+@media(prefers-reduced-motion:reduce){
+  .marquee{mask-image:none;-webkit-mask-image:none}
+  .marquee-track{animation:none;width:auto;flex:1}
+  .logo-set{flex-wrap:wrap;justify-content:center;padding-right:0;row-gap:30px;flex:1}
+  .logo-set[aria-hidden="true"]{display:none}
+}
+
 /* ---------- Process ---------- */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
 .step{position:relative;padding-top:18px}
@@ -159,7 +178,8 @@ section{padding:88px 0}
 
 /* ---------- Footer ---------- */
 footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;font-size:14.5px}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-grid{display:grid;grid-template-columns:1.3fr .8fr 1.4fr .9fr;gap:40px;margin-bottom:44px}
+.foot-carriers{grid-template-columns:1fr 1fr;column-gap:18px;font-size:13.5px}
 .foot-grid h4{color:var(--paper);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
 .foot-grid ul{list-style:none;display:grid;gap:9px}
 .foot-grid a{text-decoration:none;transition:color .18s}
@@ -186,6 +206,11 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 }
 
 @media(max-width:900px){
+  .marquee-track{animation-duration:25s}
+  .logo-set{gap:40px;padding-right:40px}
+  .logo-set li{width:128px}
+  .logo-set img{max-height:40px;max-width:118px}
+  .logo-set li.lg-wide img{max-width:128px}
   .hero-grid{grid-template-columns:1fr;gap:28px}
   .cairn-stage{order:-1}
   .cairn-stage svg{width:200px}
@@ -365,6 +390,45 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
   </div>
 </section>
 
+<!-- ================= CARRIERS ================= -->
+<section class="carriers">
+  <div class="wrap">
+    <h2 class="rv">Proudly partnered with top-rated carriers</h2>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <ul class="logo-set">
+        <li class="lg-wide"><img src="public/carriers/state-fund.svg" alt="State Compensation Insurance Fund" decoding="async"></li>
+        <li><img src="public/carriers/mercury.svg" alt="Mercury Insurance" decoding="async"></li>
+        <li><img src="public/carriers/markel.svg" alt="Markel Insurance" decoding="async"></li>
+        <li><img src="public/carriers/hagerty.svg" alt="Hagerty Insurance" decoding="async"></li>
+        <li class="lg-wide"><img src="public/carriers/employers.png" alt="EMPLOYERS Insurance" width="160" height="46" decoding="async"></li>
+        <li><img src="public/carriers/chubb.svg" alt="Chubb Insurance" decoding="async"></li>
+        <li class="lg-wide"><img src="public/carriers/hanover.svg" alt="The Hanover Insurance Group" decoding="async"></li>
+        <li><img src="public/carriers/cabrillo-coastal.svg" alt="Cabrillo Coastal General Insurance Agency" decoding="async"></li>
+        <li><img src="public/carriers/ameritas.png" alt="Ameritas" width="140" height="29" decoding="async"></li>
+        <li><img src="public/carriers/usli.png" alt="USLI — United States Liability Insurance" width="96" height="48" decoding="async"></li>
+        <li><img src="public/carriers/travelers.svg" alt="Travelers Insurance" decoding="async"></li>
+        <li><img src="public/carriers/hartford.svg" alt="The Hartford" decoding="async"></li>
+      </ul>
+      <ul class="logo-set" aria-hidden="true">
+        <li class="lg-wide"><img src="public/carriers/state-fund.svg" alt="" decoding="async"></li>
+        <li><img src="public/carriers/mercury.svg" alt="" decoding="async"></li>
+        <li><img src="public/carriers/markel.svg" alt="" decoding="async"></li>
+        <li><img src="public/carriers/hagerty.svg" alt="" decoding="async"></li>
+        <li class="lg-wide"><img src="public/carriers/employers.png" alt="" width="160" height="46" decoding="async"></li>
+        <li><img src="public/carriers/chubb.svg" alt="" decoding="async"></li>
+        <li class="lg-wide"><img src="public/carriers/hanover.svg" alt="" decoding="async"></li>
+        <li><img src="public/carriers/cabrillo-coastal.svg" alt="" decoding="async"></li>
+        <li><img src="public/carriers/ameritas.png" alt="" width="140" height="29" decoding="async"></li>
+        <li><img src="public/carriers/usli.png" alt="" width="96" height="48" decoding="async"></li>
+        <li><img src="public/carriers/travelers.svg" alt="" decoding="async"></li>
+        <li><img src="public/carriers/hartford.svg" alt="" decoding="async"></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PROCESS ================= -->
 <section class="alt">
   <div class="wrap">
@@ -518,6 +582,23 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
           <li><a href="#personal">Home &amp; auto</a></li>
           <li><a href="#industries">Industries we serve</a></li>
           <li><a href="#quote">Request a quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Carriers we represent</h4>
+        <ul class="foot-carriers">
+          <li>State Compensation Insurance Fund</li>
+          <li>Mercury Insurance</li>
+          <li>Markel</li>
+          <li>Hagerty</li>
+          <li>EMPLOYERS</li>
+          <li>Chubb</li>
+          <li>The Hanover Insurance Group</li>
+          <li>Cabrillo Coastal</li>
+          <li>Ameritas</li>
+          <li>USLI</li>
+          <li>Travelers</li>
+          <li>The Hartford</li>
         </ul>
       </div>
       <div>
