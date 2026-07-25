@@ -155,8 +155,8 @@ section{padding:88px 0}
 .prog-stone.active{background:var(--pine);width:52px}
 .prog-label{font-size:13px;font-weight:600;color:var(--stone);margin-left:auto}
 .fstep{display:none}
-.fstep.on{display:block;animation:fadeup .35s ease}
-@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fstep.on{display:block;transition:opacity .25s ease-out}
+#quoteForm.stepping{transition:height .3s ease;overflow:hidden}
 .fstep h3{font-size:24px;color:var(--pine);margin-bottom:22px}
 .chips{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .chip{border:1.5px solid rgba(20,72,74,.2);background:var(--white);border-radius:14px;padding:20px 18px;cursor:pointer;text-align:left;font-family:var(--body);transition:border-color .18s,background .18s}
@@ -192,9 +192,10 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 .privacy-note{font-size:13px;color:var(--stone);margin-top:16px}
 .privacy-note a{color:var(--pine);font-weight:600}
 
-/* ---------- Reveal on scroll ---------- */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
-.rv.in{opacity:1;transform:none}
+/* ---------- Reveal on scroll ----------
+   Hidden state (.reveal-pre) is applied by JS only, so content stays visible without JS */
+.reveal-pre{opacity:0;transform:translateY(20px)}
+.reveal-in{opacity:1;transform:translateY(0);transition:opacity .5s ease-out,transform .5s ease-out}
 
 /* iOS Safari mis-renders Fraunces' optical-size axis (distorted glyphs); pin it off on iOS only */
 @supports (-webkit-touch-callout:none){
@@ -204,7 +205,7 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
-  .rv{opacity:1;transform:none}
+  .reveal-pre{opacity:1;transform:none}
   .cairn-stone,.wave-arc{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
@@ -307,11 +308,11 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 <!-- ================= TWO PATHS ================= -->
 <section id="business">
   <div class="wrap">
-    <p class="eyebrow rv">What we cover</p>
-    <h2 class="rv">Two doors. One standard of advice.</h2>
-    <p class="lede rv">Whether you're protecting a company you built or the home your family lives in, the approach is the same: understand the risk first, then shop the market for it.</p>
+    <p class="eyebrow">What we cover</p>
+    <h2>Two doors. One standard of advice.</h2>
+    <p class="lede">Whether you're protecting a company you built or the home your family lives in, the approach is the same: understand the risk first, then shop the market for it.</p>
     <div class="split-cards">
-      <div class="path-card rv">
+      <div class="path-card">
         <p class="eyebrow">For businesses</p>
         <h3>Business insurance</h3>
         <p>From a single work truck to a multi-location operation, we build commercial programs line by line — and re-shop them at renewal so your pricing stays honest.</p>
@@ -328,7 +329,7 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
         <a class="btn" href="/business-insurance#quote">Get a business quote</a>
         <a class="quiet-link" href="/business-insurance" style="margin-left:20px">Learn more</a>
       </div>
-      <div class="path-card rv" id="personal">
+      <div class="path-card" id="personal">
         <p class="eyebrow">For families</p>
         <h3>Home &amp; auto</h3>
         <p>California's personal insurance market is tight — carriers are picky, and rates swing hard. Independent access to multiple markets matters more here than it ever has.</p>
@@ -351,16 +352,16 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 <!-- ================= INDUSTRIES ================= -->
 <section class="alt" id="industries">
   <div class="wrap">
-    <p class="eyebrow rv">Industries we serve</p>
-    <h2 class="rv">Built around how California works.</h2>
-    <p class="lede rv">Every industry carries its own risk profile — and its own carrier appetite. We know which markets want your class of business, so you're not paying a generalist's price.</p>
+    <p class="eyebrow">Industries we serve</p>
+    <h2>Built around how California works.</h2>
+    <p class="lede">Every industry carries its own risk profile — and its own carrier appetite. We know which markets want your class of business, so you're not paying a generalist's price.</p>
     <div class="ind-grid">
-      <div class="ind-card rv"><h3>Construction &amp; trades</h3><p>GL, workers' comp, commercial auto, tools &amp; equipment, and bonds for contractors, electricians, plumbers, and HVAC.</p></div>
-      <div class="ind-card rv"><h3>Restaurants &amp; hospitality</h3><p>Property, liquor liability, workers' comp, and spoilage coverage for restaurants, cafés, breweries, and caterers.</p></div>
-      <div class="ind-card rv"><h3>Professional services</h3><p>E&amp;O, cyber, and office packages for consultants, agencies, financial professionals, and healthcare practices.</p></div>
-      <div class="ind-card rv"><h3>Retail &amp; e-commerce</h3><p>Storefront property, product liability, inventory, and business interruption for shops that sell in person and online.</p></div>
-      <div class="ind-card rv"><h3>Real estate &amp; property</h3><p>Landlord packages, habitational programs, and umbrella coverage for investors, property managers, and HOAs.</p></div>
-      <div class="ind-card rv"><h3>Transportation &amp; logistics</h3><p>Commercial auto, cargo, and fleet programs for delivery operations, haulers, and owner-operators.</p></div>
+      <div class="ind-card"><h3>Construction &amp; trades</h3><p>GL, workers' comp, commercial auto, tools &amp; equipment, and bonds for contractors, electricians, plumbers, and HVAC.</p></div>
+      <div class="ind-card"><h3>Restaurants &amp; hospitality</h3><p>Property, liquor liability, workers' comp, and spoilage coverage for restaurants, cafés, breweries, and caterers.</p></div>
+      <div class="ind-card"><h3>Professional services</h3><p>E&amp;O, cyber, and office packages for consultants, agencies, financial professionals, and healthcare practices.</p></div>
+      <div class="ind-card"><h3>Retail &amp; e-commerce</h3><p>Storefront property, product liability, inventory, and business interruption for shops that sell in person and online.</p></div>
+      <div class="ind-card"><h3>Real estate &amp; property</h3><p>Landlord packages, habitational programs, and umbrella coverage for investors, property managers, and HOAs.</p></div>
+      <div class="ind-card"><h3>Transportation &amp; logistics</h3><p>Commercial auto, cargo, and fleet programs for delivery operations, haulers, and owner-operators.</p></div>
     </div>
   </div>
 </section>
@@ -368,11 +369,11 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 <!-- ================= WHY INDEPENDENT ================= -->
 <section id="why">
   <div class="wrap">
-    <p class="eyebrow rv">Why independent</p>
-    <h2 class="rv">The agent's loyalty should be to you.</h2>
-    <p class="lede rv">As an independent agency, Driftstone's loyalty is to one party: you. With access to multiple highly rated carriers, we offer objective, unbiased guidance and find the coverage that truly fits your needs — then stay at your side with personal advice and advocacy for the life of your policy.</p>
+    <p class="eyebrow">Why independent</p>
+    <h2>The agent's loyalty should be to you.</h2>
+    <p class="lede">As an independent agency, Driftstone's loyalty is to one party: you. With access to multiple highly rated carriers, we offer objective, unbiased guidance and find the coverage that truly fits your needs — then stay at your side with personal advice and advocacy for the life of your policy.</p>
     <div class="compare">
-      <div class="comp-col fit rv">
+      <div class="comp-col fit">
         <span class="comp-tag">A good fit</span>
         <h3>You will enjoy working with Driftstone if&hellip;</h3>
         <ul>
@@ -381,7 +382,7 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#2C7A74" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg>You believe the right insurance agent matters more than simply finding the cheapest option</li>
         </ul>
       </div>
-      <div class="comp-col us rv">
+      <div class="comp-col us">
         <span class="comp-tag">Driftstone — independent</span>
         <h3>Many carriers. Your side of the table.</h3>
         <ul>
@@ -398,7 +399,7 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 <!-- ================= CARRIERS ================= -->
 <section class="carriers">
   <div class="wrap">
-    <h2 class="rv">Proudly partnered with top-rated carriers</h2>
+    <h2>Proudly partnered with top-rated carriers</h2>
   </div>
   <div class="marquee">
     <div class="marquee-track">
@@ -437,20 +438,20 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 <!-- ================= PROCESS ================= -->
 <section class="alt">
   <div class="wrap">
-    <p class="eyebrow rv">How it works</p>
-    <h2 class="rv">Three steps. No pressure at any of them.</h2>
+    <p class="eyebrow">How it works</p>
+    <h2>Three steps. No pressure at any of them.</h2>
     <div class="steps">
-      <div class="step rv">
+      <div class="step">
         <div class="step-num">1</div>
         <h3>Tell us what you're protecting</h3>
         <p>A short conversation or the form below. We ask about your business, your property, your drivers — the real risk, not just the checkbox version.</p>
       </div>
-      <div class="step rv">
+      <div class="step">
         <div class="step-num">2</div>
         <h3>We shop the market</h3>
         <p>We take your risk to multiple A-rated carriers and come back with options — usually within one business day — explained in plain English, side by side.</p>
       </div>
-      <div class="step rv">
+      <div class="step">
         <div class="step-num">3</div>
         <h3>You choose, we handle the rest</h3>
         <p>Binding, certificates, carrier paperwork, and every renewal after. When something changes, you call one number: ours.</p>
@@ -462,11 +463,11 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 <!-- ================= QUOTE FORM ================= -->
 <section class="quote-sec" id="quote">
   <div class="wrap">
-    <p class="eyebrow rv">Request a quote</p>
-    <h2 class="rv">Start the conversation.</h2>
-    <p class="lede rv">Three quick steps. No obligation, no spam — just options from carriers that fit, usually within one business day.</p>
+    <p class="eyebrow">Request a quote</p>
+    <h2>Start the conversation.</h2>
+    <p class="lede">Three quick steps. No obligation, no spam — just options from carriers that fit, usually within one business day.</p>
 
-    <div class="quote-shell rv" id="quote-start">
+    <div class="quote-shell" id="quote-start">
       <div class="form-progress" aria-hidden="true">
         <div class="prog-stone active" id="ps1"></div>
         <div class="prog-stone" id="ps2"></div>
@@ -641,10 +642,23 @@ document.addEventListener('click',e=>{
 });
 
 // ---- Scroll reveal ----
-const io=new IntersectionObserver(es=>{
-  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-},{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// Hidden state is added here, not in base CSS, so sections stay visible without JS.
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduceMotion&&'IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.remove('reveal-pre');
+        e.target.classList.add('reveal-in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('main > section:not(.hero):not(.carriers)').forEach(el=>{
+    el.classList.add('reveal-pre');
+    io.observe(el);
+  });
+}
 
 // ---- Multi-step quote form ----
 let coverage=null;
@@ -653,7 +667,10 @@ const stones={1:document.getElementById('ps1'),2:document.getElementById('ps2'),
 const progLabel=document.getElementById('progLabel');
 const next1=document.getElementById('next1');
 
-function showStep(n){
+const quoteFormEl=document.getElementById('quoteForm');
+let stepSeq=0;
+
+function setStep(n){
   steps.forEach(s=>s.classList.toggle('on',s.dataset.step==String(n)));
   if(n==='done'){
     Object.values(stones).forEach(s=>{s.classList.remove('active');s.classList.add('done');});
@@ -665,6 +682,36 @@ function showStep(n){
     stones[i].classList.toggle('active',i===n);
   }
   progLabel.textContent='Step '+n+' of 3';
+}
+
+// Presentation-only wrapper around setStep: fades the outgoing step out,
+// swaps, fades the incoming step in, and eases the form height between them.
+function showStep(n){
+  const seq=++stepSeq;
+  const from=document.querySelector('.fstep.on');
+  const to=document.querySelector('.fstep[data-step="'+String(n)+'"]');
+  if(reduceMotion||!from||!to||from===to){setStep(n);return;}
+  const h0=quoteFormEl.offsetHeight;
+  quoteFormEl.classList.add('stepping');
+  quoteFormEl.style.height=h0+'px';
+  from.style.opacity='0';
+  setTimeout(()=>{
+    if(seq!==stepSeq)return;
+    from.style.opacity='';
+    to.style.opacity='0';
+    setStep(n);
+    quoteFormEl.style.height='';
+    const h1=quoteFormEl.offsetHeight;
+    quoteFormEl.style.height=h0+'px';
+    void quoteFormEl.offsetHeight;
+    quoteFormEl.style.height=h1+'px';
+    to.style.opacity='';
+    setTimeout(()=>{
+      if(seq!==stepSeq)return;
+      quoteFormEl.style.height='';
+      quoteFormEl.classList.remove('stepping');
+    },320);
+  },260);
 }
 
 document.querySelectorAll('.chip').forEach(ch=>{
