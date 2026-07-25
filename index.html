@@ -187,6 +187,10 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
 .foot-brand{font-family:var(--display);font-size:21px;color:var(--paper);margin-bottom:10px}
 .foot-tag{font-style:italic;font-family:var(--display);color:#8FC7BE;margin-bottom:16px}
 .foot-legal{border-top:1px solid rgba(246,244,236,.14);padding-top:26px;font-size:13px;color:rgba(246,244,236,.5);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-legal a{color:inherit;text-decoration:none;transition:color .18s}
+.foot-legal a:hover{color:#8FC7BE}
+.privacy-note{font-size:13px;color:var(--stone);margin-top:16px}
+.privacy-note a{color:var(--pine);font-weight:600}
 
 /* ---------- Reveal on scroll ---------- */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
@@ -546,6 +550,7 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
             <button type="button" class="back-link" data-back="2">&larr; Back</button>
             <button type="submit" class="btn">Request my quote</button>
           </div>
+          <p class="privacy-note">By submitting, you agree to our <a href="/privacy.html">Privacy Policy</a>.</p>
         </div>
 
         <!-- DONE -->
@@ -612,6 +617,7 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
     </div>
     <div class="foot-legal">
       <span>&copy; 2026 Driftstone Insurance Solutions. All rights reserved.</span>
+      <a href="/privacy.html">Privacy Policy</a>
       <span>CA License #4168429</span>
     </div>
   </div>

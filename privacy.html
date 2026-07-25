@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Privacy Policy | Driftstone Insurance Solutions</title>
+<meta name="description" content="How Driftstone Insurance Solutions collects, uses, shares, and protects your information — and the privacy rights available to California residents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,400;9..144,500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --header-h:74px;
+  --pine:#14484A;
+  --ink:#0C2D2F;
+  --sea:#2C7A74;
+  --stone:#8E9490;
+  --paper:#F6F4EC;
+  --sand:#EAE6D8;
+  --white:#FDFCF8;
+  --display:'Fraunces',Georgia,serif;
+  --body:'Figtree',-apple-system,sans-serif;
+  --max:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+/* scroll-padding-top on the scroll container, not scroll-margin on targets:
+   Safari ignores scroll-margin during anchor/fragment navigation */
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px)}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sea);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sea)}
+h1,h2,h3{font-family:var(--display);font-weight:340;line-height:1.12;letter-spacing:-.01em}
+
+/* ---------- Nav ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(246,244,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,72,74,.12)}
+nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand svg{width:40px;height:40px;flex-shrink:0}
+.brand-name{font-family:var(--display);font-weight:500;font-size:19px;letter-spacing:.01em;color:var(--pine);line-height:1.05}
+.brand-name small{display:block;font-family:var(--body);font-weight:600;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{text-decoration:none;font-weight:500;font-size:15px;color:var(--ink);transition:color .18s}
+.nav-links a:hover{color:var(--sea)}
+/* .nav-links a outranks .btn, so restate the button's text color at higher specificity */
+.nav-links a.btn,.nav-links a.btn:hover{color:var(--white)}
+.btn{display:inline-block;background:var(--pine);color:var(--white);text-decoration:none;font-weight:600;font-size:15px;padding:13px 26px;border-radius:100px;border:none;cursor:pointer;transition:background .18s,transform .18s;font-family:var(--body)}
+.btn:hover{background:var(--sea);transform:translateY(-1px)}
+.btn.small{padding:10px 20px;font-size:14px}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--pine);margin:5px 0;transition:.25s}
+
+/* ---------- Policy ---------- */
+.policy-head{padding:74px 0 6px}
+.policy-head .eyebrow{text-align:center}
+.policy-head h1{font-size:clamp(36px,4.8vw,54px);color:var(--pine);margin:16px 0 12px}
+.policy-updated{font-size:14px;font-weight:600;color:var(--stone)}
+.policy{max-width:780px;padding:34px 0 96px}
+.policy p{color:#3A5254;margin:0 0 16px;max-width:70ch}
+.policy h2{font-size:clamp(23px,2.6vw,28px);color:var(--pine);margin:46px 0 14px}
+.policy ul{margin:0 0 18px;padding-left:24px;color:#3A5254}
+.policy li{margin-bottom:9px}
+.policy a{color:var(--pine);font-weight:600}
+.policy .contact-block p{margin-bottom:4px}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;font-size:14.5px}
+.foot-grid{display:grid;grid-template-columns:1.3fr .8fr 1.4fr .9fr;gap:40px;margin-bottom:44px}
+.foot-carriers{grid-template-columns:1fr 1fr;column-gap:18px;font-size:13.5px}
+.foot-grid h4{color:var(--paper);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.foot-grid ul{list-style:none;display:grid;gap:9px}
+.foot-grid a{text-decoration:none;transition:color .18s}
+.foot-grid a:hover{color:#8FC7BE}
+.foot-brand{font-family:var(--display);font-size:21px;color:var(--paper);margin-bottom:10px}
+.foot-tag{font-style:italic;font-family:var(--display);color:#8FC7BE;margin-bottom:16px}
+.foot-legal{border-top:1px solid rgba(246,244,236,.14);padding-top:26px;font-size:13px;color:rgba(246,244,236,.5);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-legal a{color:inherit;text-decoration:none;transition:color .18s}
+.foot-legal a:hover{color:#8FC7BE}
+
+/* iOS Safari mis-renders Fraunces' optical-size axis (distorted glyphs); pin it off on iOS only */
+@supports (-webkit-touch-callout:none){
+  h1,h2,h3,.brand-name,.foot-brand,.foot-tag{font-optical-sizing:none;font-synthesis:none}
+  .brand svg{width:32px;height:32px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+
+@media(max-width:900px){
+  .nav-links{position:fixed;inset:74px 0 auto 0;background:var(--paper);flex-direction:column;align-items:flex-start;padding:26px 24px 32px;gap:20px;border-bottom:1px solid rgba(20,72,74,.15);transform:translateY(-130%);transition:transform .3s ease;box-shadow:0 20px 40px -20px rgba(0,0,0,.2)}
+  .nav-links.open{transform:none}
+  .menu-btn{display:block}
+  .policy-head{padding:52px 0 4px}
+  .policy{padding:28px 0 72px}
+  .foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="/" aria-label="Driftstone Insurance Solutions home">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M55 34c0 14-10.5 24-24.5 24C17 58 6 47.5 6 34.5 6 19 18 7 33 7c8 0 15 3.4 19.6 9-4.2-3.6-9.8-5.6-15.6-5.6-12.7 0-22.6 9.8-22.6 22.4 0 11.4 8.7 20.3 19.9 20.3 10.9 0 19.3-8 19.3-18.6 0-2.4-.4-4.6-1.2-6.6.9 1.9 2.6 3.7 2.6 6.1z" fill="#14484A"/>
+          <ellipse cx="31" cy="44" rx="11" ry="4.6" fill="#6E7672"/>
+          <ellipse cx="31" cy="36.6" rx="8.6" ry="3.9" fill="#8E9490"/>
+          <ellipse cx="31" cy="30.4" rx="6.4" ry="3.2" fill="#A9AEA9"/>
+          <ellipse cx="31" cy="25.2" rx="4.4" ry="2.5" fill="#C2C6C0"/>
+        </svg>
+        <span class="brand-name">Driftstone<small>Insurance Solutions</small></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/business-insurance">Business</a></li>
+        <li><a href="/#personal">Personal</a></li>
+        <li><a href="/#industries">Industries</a></li>
+        <li><a href="/#why">Why independent</a></li>
+        <li><a class="btn small" href="/#quote">Request a quote</a></li>
+      </ul>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="wrap policy-head">
+  <p class="eyebrow">Legal</p>
+  <h1>Privacy Policy</h1>
+  <p class="policy-updated">Effective date: July 24, 2026</p>
+</div>
+
+<div class="wrap">
+  <div class="policy">
+    <p>Driftstone Insurance Solutions ("Driftstone," "we," "us") is an independent insurance agency licensed in California (License #4168429), serving businesses and individuals in North County San Diego and throughout California. This policy explains what information we collect through this website, how we use it, who we share it with, and the choices you have.</p>
+
+    <h2>Information We Collect</h2>
+    <p><strong>Information you provide.</strong> When you request a quote or contact us through this site, we collect the information you enter, which may include:</p>
+    <ul>
+      <li>Your name, email address, and phone number</li>
+      <li>Your business name and general business details</li>
+      <li>The type of coverage you are interested in and related details you choose to share</li>
+    </ul>
+    <p><strong>Information collected automatically.</strong> Like most websites, we may collect basic technical information when you visit, such as your device type, browser, approximate location, pages viewed, and referring site. This is collected through standard analytics tools and is used in aggregate to understand how the site is used.</p>
+
+    <h2>How We Use Your Information</h2>
+    <ul>
+      <li>To respond to your quote request or inquiry</li>
+      <li>To obtain insurance quotes on your behalf from the carriers we work with</li>
+      <li>To communicate with you about your request, your policy options, or our services</li>
+      <li>To operate, maintain, and improve this website</li>
+      <li>To comply with legal, regulatory, and licensing obligations</li>
+    </ul>
+
+    <h2>Who We Share Information With</h2>
+    <p>We share your information only as needed to serve you:</p>
+    <ul>
+      <li><strong>Insurance carriers and underwriters.</strong> To prepare quotes and place coverage, we share the details you provide with the insurance carriers we represent.</li>
+      <li><strong>Service providers.</strong> We use trusted third-party services to operate this website, including website hosting and form processing services that deliver your submission to us by email. These providers process your information only to provide their services to us.</li>
+      <li><strong>Legal requirements.</strong> We may disclose information if required by law, regulation, subpoena, or a request from the California Department of Insurance or other regulators.</li>
+    </ul>
+    <p><strong>We do not sell your personal information</strong>, and we do not share it with third parties for their own advertising or marketing purposes.</p>
+
+    <h2>Your California Privacy Rights</h2>
+    <p>If you are a California resident, you have the right to:</p>
+    <ul>
+      <li><strong>Know</strong> what personal information we have collected about you</li>
+      <li><strong>Access</strong> a copy of that information</li>
+      <li><strong>Correct</strong> inaccurate personal information</li>
+      <li><strong>Delete</strong> your personal information, subject to legal and regulatory exceptions (for example, records we must keep under insurance law)</li>
+      <li><strong>Non-discrimination</strong> — we will never treat you differently for exercising any of these rights</li>
+    </ul>
+    <p>To exercise any of these rights, email us at <a href="mailto:zach@driftstoneinsurance.com">zach@driftstoneinsurance.com</a> with your request. We will verify your identity before responding and reply within the timeframes required by California law.</p>
+
+    <h2>How Long We Keep Information</h2>
+    <p>We keep the information you submit for as long as needed to respond to your request, service your account, and meet insurance record-keeping requirements under California law. When information is no longer needed, we delete or de-identify it.</p>
+
+    <h2>How We Protect Information</h2>
+    <p>This website is served over an encrypted (HTTPS) connection, and we limit access to your information to those who need it to serve you. No method of transmission or storage is completely secure, but we take reasonable measures appropriate to the sensitivity of the information we handle.</p>
+
+    <h2>Cookies and Analytics</h2>
+    <p>This site may use cookies or similar technologies for basic functionality and analytics. You can control cookies through your browser settings. Because there is no industry standard for "Do Not Track" signals, this site does not respond to them.</p>
+
+    <h2>Third-Party Links</h2>
+    <p>This site may link to websites we do not operate, such as carrier websites. Their privacy practices are governed by their own policies, and we encourage you to review them.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>This website is intended for business owners and adults. We do not knowingly collect personal information from anyone under 18. If you believe a minor has submitted information through this site, contact us and we will delete it.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this policy from time to time. When we do, we will revise the effective date at the top of this page. Material changes will be noted on this page.</p>
+
+    <h2>Contact Us</h2>
+    <div class="contact-block">
+      <p><strong>Driftstone Insurance Solutions</strong></p>
+      <p>CA Insurance License #4168429</p>
+      <p>North County San Diego, California</p>
+      <p>Email: <a href="mailto:zach@driftstoneinsurance.com">zach@driftstoneinsurance.com</a></p>
+      <p>Phone: <a href="tel:+14423595633">442-359-5633</a></p>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Driftstone Insurance Solutions</div>
+        <div class="foot-tag">Protecting what matters.</div>
+        <p>An independent insurance agency based in North County San Diego, proudly serving businesses and families across all of California.</p>
+      </div>
+      <div>
+        <h4>Coverage</h4>
+        <ul>
+          <li><a href="/business-insurance">Business insurance</a></li>
+          <li><a href="/#personal">Home &amp; auto</a></li>
+          <li><a href="/#industries">Industries we serve</a></li>
+          <li><a href="/#quote">Request a quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Carriers we represent</h4>
+        <ul class="foot-carriers">
+          <li>State Compensation Insurance Fund</li>
+          <li>Mercury Insurance</li>
+          <li>Markel</li>
+          <li>Hagerty</li>
+          <li>EMPLOYERS</li>
+          <li>Chubb</li>
+          <li>The Hanover Insurance Group</li>
+          <li>Cabrillo Coastal</li>
+          <li>Ameritas</li>
+          <li>USLI</li>
+          <li>Travelers</li>
+          <li>The Hartford</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+14423595633">442-359-5633</a></li>
+          <li><a href="mailto:zach@driftstoneinsurance.com">zach@driftstoneinsurance.com</a></li>
+          <li>North County San Diego, CA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>&copy; 2026 Driftstone Insurance Solutions. All rights reserved.</span>
+      <a href="/privacy.html">Privacy Policy</a>
+      <span>CA License #4168429</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---- Mobile menu ----
+const menuBtn=document.getElementById('menuBtn');
+const navLinks=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded',open);
+});
+function closeMenu(){
+  navLinks.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded','false');
+}
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('click',e=>{
+  if(navLinks.classList.contains('open')&&!navLinks.contains(e.target)&&!menuBtn.contains(e.target))closeMenu();
+});
+</script>
+</body>
+</html>
