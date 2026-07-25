@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>California Business Insurance | Driftstone Insurance Solutions</title>
+<meta name="description" content="Business insurance for California companies, built line by line by an independent agency in North County San Diego. General liability, workers' comp, commercial auto, and more from multiple A-rated carriers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,400;9..144,500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --header-h:74px;
+  --pine:#14484A;
+  --ink:#0C2D2F;
+  --sea:#2C7A74;
+  --stone:#8E9490;
+  --paper:#F6F4EC;
+  --sand:#EAE6D8;
+  --white:#FDFCF8;
+  --display:'Fraunces',Georgia,serif;
+  --body:'Figtree',-apple-system,sans-serif;
+  --max:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+/* scroll-padding-top on the scroll container, not scroll-margin on targets:
+   Safari ignores scroll-margin during anchor/fragment navigation */
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px)}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sea);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sea)}
+h1,h2,h3{font-family:var(--display);font-weight:340;line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(30px,4.2vw,44px);margin:14px 0 18px}
+.lede{font-size:clamp(17px,2vw,19.5px);color:#3A5254;max-width:60ch}
+
+/* ---------- Nav ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(246,244,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,72,74,.12)}
+nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand svg{width:40px;height:40px;flex-shrink:0}
+.brand-name{font-family:var(--display);font-weight:500;font-size:19px;letter-spacing:.01em;color:var(--pine);line-height:1.05}
+.brand-name small{display:block;font-family:var(--body);font-weight:600;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{text-decoration:none;font-weight:500;font-size:15px;color:var(--ink);transition:color .18s}
+.nav-links a:hover{color:var(--sea)}
+.nav-links a[aria-current="page"]{color:var(--sea)}
+/* .nav-links a outranks .btn, so restate the button's text color at higher specificity */
+.nav-links a.btn,.nav-links a.btn:hover{color:var(--white)}
+.btn{display:inline-block;background:var(--pine);color:var(--white);text-decoration:none;font-weight:600;font-size:15px;padding:13px 26px;border-radius:100px;border:none;cursor:pointer;transition:background .18s,transform .18s;font-family:var(--body)}
+.btn:hover{background:var(--sea);transform:translateY(-1px)}
+.btn.small{padding:10px 20px;font-size:14px}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--pine);margin:5px 0;transition:.25s}
+
+/* ---------- Hero ---------- */
+.hero{padding:84px 0 64px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(40px,5.6vw,64px);margin:16px 0 22px;color:var(--pine);max-width:15ch}
+.hero-arc{position:absolute;right:-120px;top:30px;width:460px;height:460px;opacity:.5;pointer-events:none}
+.hero .wrap{position:relative}
+.hero-actions{display:flex;align-items:center;gap:26px;margin-top:34px;flex-wrap:wrap}
+.quiet-link{font-weight:600;font-size:15px;text-decoration:none;color:var(--pine);border-bottom:2px solid var(--sand);padding-bottom:3px;transition:border-color .18s}
+.quiet-link:hover{border-color:var(--sea)}
+.trust-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:30px;font-size:13.5px;font-weight:600;color:var(--stone);letter-spacing:.02em}
+.trust-line span::after{content:"·";margin-left:10px;color:var(--sand)}
+.trust-line span:last-child::after{content:""}
+
+/* ---------- Sections ---------- */
+section{padding:88px 0}
+
+/* ---------- Coverage ---------- */
+.cov-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+.cov-card{background:var(--white);border:1px solid rgba(20,72,74,.14);border-radius:14px;padding:26px 26px 24px;transition:border-color .2s,transform .2s}
+.cov-card:hover{border-color:var(--sea);transform:translateY(-3px)}
+.cov-card h3{font-size:19px;font-family:var(--body);font-weight:600;color:var(--pine);margin-bottom:7px;display:flex;align-items:center;gap:10px}
+.cov-card h3::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sea);flex-shrink:0}
+.cov-card p{font-size:14.5px;color:#3A5254;line-height:1.55}
+.cov-note{margin-top:26px;font-size:14px;color:var(--stone);max-width:64ch}
+
+/* ---------- Industries (compact) ---------- */
+.alt{background:var(--sand)}
+.ind-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.ind-pill{background:var(--paper);border:1px solid rgba(20,72,74,.16);border-radius:100px;padding:11px 22px;font-size:15px;font-weight:600;color:var(--pine)}
+.ind-note{margin-top:26px;font-size:16px;color:#3A5254;max-width:62ch}
+
+/* ---------- Process ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
+.step{position:relative;padding-top:18px}
+.step-num{font-family:var(--display);font-size:52px;font-weight:340;color:var(--sea);opacity:.45;line-height:1}
+.step h3{font-size:20px;font-family:var(--body);font-weight:600;margin:12px 0 8px;color:var(--pine)}
+.step p{font-size:15px;color:#3A5254}
+.turnaround{margin-top:40px;font-size:14.5px;color:#3A5254;display:flex;align-items:center;gap:10px}
+.turnaround svg{width:18px;height:18px;flex-shrink:0}
+
+/* ---------- Quote form ---------- */
+.quote-sec{background:var(--pine);color:var(--paper)}
+.quote-sec .eyebrow{color:#8FC7BE}
+.quote-sec h2{color:var(--paper)}
+.quote-sec .lede{color:rgba(246,244,236,.78)}
+.quote-shell{background:var(--paper);color:var(--ink);border-radius:20px;padding:44px;margin-top:44px;max-width:720px;box-shadow:0 30px 70px -30px rgba(0,0,0,.45)}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13.5px;font-weight:600;color:var(--pine);margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1.5px solid rgba(20,72,74,.2);border-radius:11px;font-family:var(--body);font-size:15.5px;background:var(--white);color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--sea);box-shadow:0 0 0 3px rgba(44,122,116,.15)}
+.field .err-msg{display:none;font-size:13px;color:#B4552D;margin-top:6px;font-weight:500}
+.field.invalid input,.field.invalid select{border-color:#B4552D}
+.field.invalid .err-msg{display:block}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-foot{margin-top:26px}
+.reassure{font-size:14px;color:var(--stone);margin-top:16px}
+.interim{margin-top:22px;padding-top:20px;border-top:1px solid rgba(20,72,74,.14);font-size:14.5px;color:#3A5254}
+.interim a{font-weight:600;color:var(--pine)}
+.form-status{display:none;margin-top:18px;padding:14px 18px;border-radius:11px;font-size:14.5px;font-weight:500}
+.form-status.ok{display:block;background:#EEF3EE;color:var(--pine);border:1px solid rgba(44,122,116,.35)}
+.form-status.bad{display:block;background:#F7EDE7;color:#8A3D1E;border:1px solid rgba(180,85,45,.35)}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:780px;margin-top:40px}
+.faq details{border-bottom:1px solid rgba(20,72,74,.14)}
+.faq details:first-child{border-top:1px solid rgba(20,72,74,.14)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 2px;font-weight:600;font-size:17px;color:var(--pine);transition:color .18s}
+.faq summary:hover{color:var(--sea)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);font-size:26px;font-weight:340;color:var(--sea);line-height:1;transition:transform .25s;flex-shrink:0}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .faq-a{padding:0 2px 24px;color:#3A5254;font-size:15.5px;max-width:66ch}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;font-size:14.5px}
+.foot-grid{display:grid;grid-template-columns:1.3fr .8fr 1.4fr .9fr;gap:40px;margin-bottom:44px}
+.foot-carriers{grid-template-columns:1fr 1fr;column-gap:18px;font-size:13.5px}
+.foot-grid h4{color:var(--paper);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.foot-grid ul{list-style:none;display:grid;gap:9px}
+.foot-grid a{text-decoration:none;transition:color .18s}
+.foot-grid a:hover{color:#8FC7BE}
+.foot-brand{font-family:var(--display);font-size:21px;color:var(--paper);margin-bottom:10px}
+.foot-tag{font-style:italic;font-family:var(--display);color:#8FC7BE;margin-bottom:16px}
+.foot-legal{border-top:1px solid rgba(246,244,236,.14);padding-top:26px;font-size:13px;color:rgba(246,244,236,.5);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* ---------- Sticky mobile call bar ---------- */
+.call-bar{display:none}
+
+/* ---------- Reveal on scroll ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+
+/* iOS Safari mis-renders Fraunces' optical-size axis (distorted glyphs); pin it off on iOS only */
+@supports (-webkit-touch-callout:none){
+  h1,h2,h3,.brand-name,.step-num,.foot-brand,.foot-tag{font-optical-sizing:none;font-synthesis:none}
+  .brand svg{width:32px;height:32px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+@media(max-width:900px){
+  .hero{padding:64px 0 52px}
+  .hero-arc{display:none}
+  .cov-grid,.steps{grid-template-columns:1fr}
+  .nav-links{position:fixed;inset:74px 0 auto 0;background:var(--paper);flex-direction:column;align-items:flex-start;padding:26px 24px 32px;gap:20px;border-bottom:1px solid rgba(20,72,74,.15);transform:translateY(-130%);transition:transform .3s ease;box-shadow:0 20px 40px -20px rgba(0,0,0,.2)}
+  .nav-links.open{transform:none}
+  .menu-btn{display:block}
+  section{padding:64px 0}
+  .quote-shell{padding:30px 22px}
+  .frow{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  body{padding-bottom:66px}
+  .call-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;background:var(--pine);padding:10px 14px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px -12px rgba(0,0,0,.35)}
+  .call-bar a{flex:1;text-align:center;text-decoration:none;font-weight:600;font-size:15px;padding:12px 10px;border-radius:100px}
+  .call-bar .cb-call{background:var(--paper);color:var(--pine)}
+  .call-bar .cb-quote{background:rgba(246,244,236,.14);color:var(--paper);border:1px solid rgba(246,244,236,.35)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="/" aria-label="Driftstone Insurance Solutions home">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M55 34c0 14-10.5 24-24.5 24C17 58 6 47.5 6 34.5 6 19 18 7 33 7c8 0 15 3.4 19.6 9-4.2-3.6-9.8-5.6-15.6-5.6-12.7 0-22.6 9.8-22.6 22.4 0 11.4 8.7 20.3 19.9 20.3 10.9 0 19.3-8 19.3-18.6 0-2.4-.4-4.6-1.2-6.6.9 1.9 2.6 3.7 2.6 6.1z" fill="#14484A"/>
+          <ellipse cx="31" cy="44" rx="11" ry="4.6" fill="#6E7672"/>
+          <ellipse cx="31" cy="36.6" rx="8.6" ry="3.9" fill="#8E9490"/>
+          <ellipse cx="31" cy="30.4" rx="6.4" ry="3.2" fill="#A9AEA9"/>
+          <ellipse cx="31" cy="25.2" rx="4.4" ry="2.5" fill="#C2C6C0"/>
+        </svg>
+        <span class="brand-name">Driftstone<small>Insurance Solutions</small></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/business-insurance" aria-current="page">Business</a></li>
+        <li><a href="/#personal">Personal</a></li>
+        <li><a href="/#industries">Industries</a></li>
+        <li><a href="/#why">Why independent</a></li>
+        <li><a class="btn small" href="#quote">Get a business quote</a></li>
+      </ul>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <svg class="hero-arc" viewBox="0 0 300 300" fill="none" aria-hidden="true">
+    <path d="M258 150c0 62-46 106-108 106C88 256 40 210 40 152 40 84 94 30 160 30c34 0 64 14 84 37-18-15-42-24-67-24-56 0-99 43-99 98 0 50 38 89 87 89 48 0 85-35 85-82 0-10-1.6-19-4.8-27 4.2 8 12.8 18 12.8 29z" fill="#14484A" opacity=".14"/>
+  </svg>
+  <div class="wrap">
+    <p class="eyebrow">California business insurance</p>
+    <h1>Protect the business you've built.</h1>
+    <p class="lede">Coverage built around how your business actually operates — its contracts, employees, vehicles, property, and plans. Not a template with your name typed in.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#quote">Get a business quote</a>
+      <a class="quiet-link" href="tel:+14423595633">Call 442-359-5633</a>
+    </div>
+    <p class="trust-line"><span>Independent agency</span><span>Multiple A-rated carriers</span><span>California businesses only</span></p>
+  </div>
+</section>
+
+<!-- ================= COVERAGE ================= -->
+<section id="coverage">
+  <div class="wrap">
+    <p class="eyebrow rv">What we place</p>
+    <h2 class="rv">Coverage built line by line.</h2>
+    <p class="lede rv">Every policy on this list answers a different question about your business. We'll tell you which ones apply to yours — and which ones don't.</p>
+    <div class="cov-grid">
+      <div class="cov-card rv"><h3>General liability</h3><p>Covers third-party injury and property damage claims — the coverage most contracts and leases ask for first.</p></div>
+      <div class="cov-card rv"><h3>Commercial property</h3><p>Protects your building, equipment, and inventory against fire, theft, and other covered damage.</p></div>
+      <div class="cov-card rv"><h3>Workers' compensation</h3><p>Required for California businesses with employees — covers medical care and lost wages after a workplace injury.</p></div>
+      <div class="cov-card rv"><h3>Commercial auto</h3><p>Covers the vehicles your business owns or uses, from a single work truck to a small fleet.</p></div>
+      <div class="cov-card rv"><h3>Business owner's policy (BOP)</h3><p>Bundles general liability and property into one policy for businesses that qualify.</p></div>
+      <div class="cov-card rv"><h3>Professional liability / E&amp;O</h3><p>Responds when a client claims your work, advice, or service caused them a financial loss.</p></div>
+      <div class="cov-card rv"><h3>Cyber liability</h3><p>Covers data breaches, ransomware, and funds-transfer fraud — including notification and recovery costs.</p></div>
+      <div class="cov-card rv"><h3>Commercial umbrella</h3><p>Adds a layer of liability limits above your underlying policies when a contract calls for more.</p></div>
+      <div class="cov-card rv"><h3>Tools, equipment &amp; inland marine</h3><p>Covers gear that moves — tools, machinery, and equipment in transit or on the job site.</p></div>
+      <div class="cov-card rv"><h3>Bonds, when applicable</h3><p>Contractor license bonds and other surety bonds when a license or project requires one.</p></div>
+    </div>
+    <p class="cov-note rv">What we recommend depends on your business, its operations, and carrier eligibility — not every line applies to every operation.</p>
+  </div>
+</section>
+
+<!-- ================= INDUSTRIES ================= -->
+<section class="alt" id="industries">
+  <div class="wrap">
+    <p class="eyebrow rv">Industries</p>
+    <h2 class="rv">Built around how California works.</h2>
+    <div class="ind-row rv">
+      <span class="ind-pill">Construction &amp; trades</span>
+      <span class="ind-pill">Restaurants &amp; hospitality</span>
+      <span class="ind-pill">Professional services</span>
+      <span class="ind-pill">Retail &amp; e-commerce</span>
+      <span class="ind-pill">Real estate &amp; property</span>
+      <span class="ind-pill">Transportation &amp; logistics</span>
+    </div>
+    <p class="ind-note rv">From job sites to storefronts to client work, each of these carries its own risks and its own carrier appetite — we know which markets want your class of business.</p>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section id="process">
+  <div class="wrap">
+    <p class="eyebrow rv">How it works</p>
+    <h2 class="rv">Three steps. No pressure at any of them.</h2>
+    <div class="steps">
+      <div class="step rv">
+        <div class="step-num">1</div>
+        <h3>Tell us what you're protecting</h3>
+        <p>A short conversation or the form below. We ask about your operations, contracts, employees, and vehicles — the real risk, not the checkbox version.</p>
+      </div>
+      <div class="step rv">
+        <div class="step-num">2</div>
+        <h3>We shop the market</h3>
+        <p>As an independent agency, Driftstone compares multiple A-rated carriers to find the right fit for your class of business — explained in plain English, side by side.</p>
+      </div>
+      <div class="step rv">
+        <div class="step-num">3</div>
+        <h3>You choose — we handle the rest</h3>
+        <p>Certificates, carrier paperwork, policy changes, and proactive renewals. When something changes, you call one number: ours.</p>
+      </div>
+    </div>
+    <p class="turnaround rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2C7A74" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      Quotes usually come back within one business day, depending on complexity and the information carriers need.
+    </p>
+  </div>
+</section>
+
+<!-- ================= QUOTE FORM ================= -->
+<section class="quote-sec" id="quote">
+  <div class="wrap">
+    <p class="eyebrow rv">Get a business quote</p>
+    <h2 class="rv">Let's make sure your coverage can keep up.</h2>
+
+    <div class="quote-shell rv">
+      <form id="bizQuoteForm" novalidate>
+        <div class="frow">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+            <p class="err-msg">Please enter your name.</p>
+          </div>
+          <div class="field">
+            <label for="bizname">Business name</label>
+            <input type="text" id="bizname" name="business_name" autocomplete="organization" required>
+            <p class="err-msg">Please enter your business name.</p>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <p class="err-msg">Please enter a valid email address.</p>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+            <p class="err-msg">Please enter a phone number.</p>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="field">
+            <label for="city">California city</label>
+            <input type="text" id="city" name="city" placeholder="e.g. Oceanside" required>
+            <p class="err-msg">Please enter your city.</p>
+          </div>
+          <div class="field">
+            <label for="industry">Industry</label>
+            <select id="industry" name="industry" required>
+              <option value="">Select an industry&hellip;</option>
+              <option>Construction &amp; trades</option>
+              <option>Restaurants &amp; hospitality</option>
+              <option>Professional services</option>
+              <option>Retail &amp; e-commerce</option>
+              <option>Real estate &amp; property</option>
+              <option>Transportation &amp; logistics</option>
+              <option>Other</option>
+            </select>
+            <p class="err-msg">Please select an industry.</p>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="field">
+            <label for="employees">Number of employees</label>
+            <select id="employees" name="employees">
+              <option>Just me</option>
+              <option>2&ndash;10</option>
+              <option>11&ndash;25</option>
+              <option>26&ndash;50</option>
+              <option>51+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="coverage-needed">Coverage needed</label>
+            <select id="coverage-needed" name="coverage_needed">
+              <option>Not sure yet — help me figure it out</option>
+              <option>General liability</option>
+              <option>Workers' compensation</option>
+              <option>Business owner's policy (BOP)</option>
+              <option>Commercial auto</option>
+              <option>Professional liability / E&amp;O</option>
+              <option>Cyber liability</option>
+              <option>Full program — multiple lines</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="renewal">Current policy renewal date <span style="color:var(--stone);font-weight:400">(if you have one)</span></label>
+          <input type="date" id="renewal" name="renewal_date">
+        </div>
+        <div class="field">
+          <label for="message">Brief message</label>
+          <textarea id="message" name="message" rows="3" placeholder="What does the business do day to day? Anything a carrier should know?"></textarea>
+        </div>
+        <div class="form-foot">
+          <button type="submit" class="btn">Start my business quote</button>
+          <p class="reassure">No obligation. No spam. Just a conversation about coverage that fits.</p>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </div>
+      </form>
+      <p class="interim">Prefer to skip the form? Email <a href="mailto:zach@driftstoneinsurance.com">zach@driftstoneinsurance.com</a> or call <a href="tel:+14423595633">442-359-5633</a> directly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap">
+    <p class="eyebrow rv">Common questions</p>
+    <h2 class="rv">Answers before you ask.</h2>
+    <div class="faq rv">
+      <details>
+        <summary>What insurance does my California business actually need?</summary>
+        <p class="faq-a">California requires workers' compensation for businesses with employees — even one. Beyond that, the requirements usually come from your contracts, lease, or license: clients and landlords often set minimum liability limits before you can start work. The right mix depends on how your business actually operates, which is exactly what a quote conversation sorts out.</p>
+      </details>
+      <details>
+        <summary>Can you provide certificates of insurance when a client or landlord asks?</summary>
+        <p class="faq-a">Yes. A certificate of insurance (COI) is the one-page document proving your coverage is active — clients, landlords, and general contractors routinely require one before work begins. We handle certificates for our clients as an ongoing part of the service, including additional insured requests and contract-specific wording.</p>
+      </details>
+      <details>
+        <summary>I already have a policy. Will you review it?</summary>
+        <p class="faq-a">Yes. A review looks for the gaps that build up quietly: coverage that doesn't match what you actually do, outdated classifications, and limits that haven't kept up with your growth in revenue, payroll, or headcount. You get a plain-English read on where you stand, whether or not you change anything.</p>
+      </details>
+      <details>
+        <summary>Do you only work with California businesses?</summary>
+        <p class="faq-a">Yes — Driftstone works exclusively with California businesses. That focus means deep familiarity with how companies here operate: the state's workers' comp requirements, the way local contracts and leases are written, and which carriers are actively writing each class of business in California.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Driftstone Insurance Solutions</div>
+        <div class="foot-tag">Protecting what matters.</div>
+        <p>An independent insurance agency based in North County San Diego, proudly serving businesses and families across all of California.</p>
+      </div>
+      <div>
+        <h4>Coverage</h4>
+        <ul>
+          <li><a href="/business-insurance">Business insurance</a></li>
+          <li><a href="/#personal">Home &amp; auto</a></li>
+          <li><a href="/#industries">Industries we serve</a></li>
+          <li><a href="#quote">Get a business quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Carriers we represent</h4>
+        <ul class="foot-carriers">
+          <li>State Compensation Insurance Fund</li>
+          <li>Mercury Insurance</li>
+          <li>Markel</li>
+          <li>Hagerty</li>
+          <li>EMPLOYERS</li>
+          <li>Chubb</li>
+          <li>The Hanover Insurance Group</li>
+          <li>Cabrillo Coastal</li>
+          <li>Ameritas</li>
+          <li>USLI</li>
+          <li>Travelers</li>
+          <li>The Hartford</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+14423595633">442-359-5633</a></li>
+          <li><a href="mailto:zach@driftstoneinsurance.com">zach@driftstoneinsurance.com</a></li>
+          <li>North County San Diego, CA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>&copy; 2026 Driftstone Insurance Solutions. All rights reserved.</span>
+      <span>CA License #4168429</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= STICKY MOBILE CALL BAR ================= -->
+<div class="call-bar" aria-label="Quick contact">
+  <a class="cb-call" href="tel:+14423595633">Call 442-359-5633</a>
+  <a class="cb-quote" href="#quote">Get a quote</a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What insurance does my California business actually need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "California requires workers' compensation for businesses with employees — even one. Beyond that, the requirements usually come from your contracts, lease, or license: clients and landlords often set minimum liability limits before you can start work. The right mix depends on how your business actually operates, which is exactly what a quote conversation sorts out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you provide certificates of insurance when a client or landlord asks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A certificate of insurance (COI) is the one-page document proving your coverage is active — clients, landlords, and general contractors routinely require one before work begins. We handle certificates for our clients as an ongoing part of the service, including additional insured requests and contract-specific wording."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I already have a policy. Will you review it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A review looks for the gaps that build up quietly: coverage that doesn't match what you actually do, outdated classifications, and limits that haven't kept up with your growth in revenue, payroll, or headcount. You get a plain-English read on where you stand, whether or not you change anything."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you only work with California businesses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — Driftstone works exclusively with California businesses. That focus means deep familiarity with how companies here operate: the state's workers' comp requirements, the way local contracts and leases are written, and which carriers are actively writing each class of business in California."
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+// ---- Mobile menu ----
+const menuBtn=document.getElementById('menuBtn');
+const navLinks=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded',open);
+});
+function closeMenu(){
+  navLinks.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded','false');
+}
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('click',e=>{
+  if(navLinks.classList.contains('open')&&!navLinks.contains(e.target)&&!menuBtn.contains(e.target))closeMenu();
+});
+
+// ---- Scroll reveal ----
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// ---- Quote form ----
+// TODO — WIRE TO FORMSPREE BEFORE RELYING ON THIS FORM:
+//   1. Create a free form at https://formspree.io (log in with zach@driftstoneinsurance.com).
+//   2. Formspree gives you an endpoint like: https://formspree.io/f/abcdwxyz
+//   3. Paste that endpoint into FORMSPREE_ENDPOINT below (keep the quotes).
+//   That's the only change needed — the fetch code below already POSTs the form
+//   to Formspree and shows success/error states.
+// Until the endpoint is set, submitting opens the visitor's email app with the
+// form contents pre-filled and addressed to zach@driftstoneinsurance.com, so no
+// request is ever lost.
+const FORMSPREE_ENDPOINT="";
+
+const form=document.getElementById('bizQuoteForm');
+const statusEl=document.getElementById('formStatus');
+
+function validate(){
+  let firstBad=null;
+  form.querySelectorAll('.field').forEach(f=>{
+    const input=f.querySelector('input[required],select[required]');
+    if(!input)return;
+    const bad=!input.value.trim()||(input.type==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value));
+    f.classList.toggle('invalid',bad);
+    if(bad&&!firstBad)firstBad=input;
+  });
+  if(firstBad)firstBad.focus();
+  return !firstBad;
+}
+form.querySelectorAll('input,select').forEach(el=>{
+  el.addEventListener('input',()=>el.closest('.field').classList.remove('invalid'));
+});
+
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  statusEl.className='form-status';
+  if(!validate())return;
+  const data=new FormData(form);
+
+  if(FORMSPREE_ENDPOINT){
+    try{
+      const res=await fetch(FORMSPREE_ENDPOINT,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+      if(!res.ok)throw new Error();
+      form.reset();
+      statusEl.textContent="Request received. We'll be in touch — usually within one business day.";
+      statusEl.classList.add('ok');
+    }catch{
+      statusEl.textContent="Something went wrong sending your request. Please email zach@driftstoneinsurance.com or call 442-359-5633.";
+      statusEl.classList.add('bad');
+    }
+    return;
+  }
+
+  // Interim path (no endpoint configured yet): open a pre-filled email draft.
+  const lines=[];
+  for(const[k,v]of data.entries())if(v)lines.push(k.replace(/_/g,' ')+': '+v);
+  const subject='Business quote request — '+(data.get('business_name')||data.get('name'));
+  window.location.href='mailto:zach@driftstoneinsurance.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
+  statusEl.textContent="We've opened an email draft with your details — hit send and we'll take it from there. If nothing opened, email zach@driftstoneinsurance.com directly.";
+  statusEl.classList.add('ok');
+});
+</script>
+</body>
+</html>
