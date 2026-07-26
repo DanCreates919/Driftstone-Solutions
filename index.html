@@ -167,6 +167,12 @@ section{padding:88px 0}
 .field label{display:block;font-size:13.5px;font-weight:600;color:var(--pine);margin-bottom:7px}
 .field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1.5px solid rgba(20,72,74,.2);border-radius:11px;font-family:var(--body);font-size:15.5px;background:var(--white);color:var(--ink)}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--sea);box-shadow:0 0 0 3px rgba(44,122,116,.15)}
+.field .err-msg{display:none;font-size:13px;color:#B4552D;margin-top:6px;font-weight:500}
+.field.invalid input,.field.invalid select{border-color:#B4552D}
+.field.invalid .err-msg{display:block}
+.form-status{display:none;margin-top:18px;padding:14px 18px;border-radius:11px;font-size:14.5px;font-weight:500}
+.form-status.bad{display:block;background:#F7EDE7;color:#8A3D1E;border:1px solid rgba(180,85,45,.35)}
+.hp-field{position:absolute!important;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}
 .back-link{background:none;border:none;font-family:var(--body);font-weight:600;font-size:14.5px;color:var(--stone);cursor:pointer;padding:8px 0}
@@ -532,12 +538,14 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
             </div>
             <div class="field">
               <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" required>
+              <input type="tel" id="phone" name="phone" inputmode="tel" required>
+              <p class="err-msg">Please enter a valid 10-digit phone number.</p>
             </div>
           </div>
           <div class="field">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
+            <p class="err-msg">Please enter a valid email address.</p>
           </div>
           <div class="field">
             <label for="pref">Preferred contact</label>
@@ -547,10 +555,15 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
               <option>Email me</option>
             </select>
           </div>
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
           <div class="form-nav">
             <button type="button" class="back-link" data-back="2">&larr; Back</button>
             <button type="submit" class="btn">Request my quote</button>
           </div>
+          <p class="form-status" id="formStatus" role="status"></p>
           <p class="privacy-note">By submitting, you agree to our <a href="/privacy.html">Privacy Policy</a>.</p>
         </div>
 
@@ -725,21 +738,64 @@ document.querySelectorAll('.chip').forEach(ch=>{
 });
 
 next1.addEventListener('click',()=>{if(coverage)showStep(2);});
+
+// ---- Field validation ----
+const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+const validators={
+  city:v=>!!v.trim(),
+  fname:v=>!!v.trim(),
+  phone:v=>{const d=v.replace(/\D/g,'');return d.length===10||(d.length===11&&d[0]==='1');},
+  email:v=>EMAIL_RE.test(v.trim())
+};
+function checkField(id,show){
+  const el=document.getElementById(id);
+  const ok=validators[id](el.value);
+  // "show" reveals a new error (on blur/submit); otherwise only clear once valid
+  if(show||ok)el.closest('.field').classList.toggle('invalid',!ok);
+  return ok;
+}
+['phone','email'].forEach(id=>{
+  document.getElementById(id).addEventListener('blur',()=>checkField(id,true));
+});
+Object.keys(validators).forEach(id=>{
+  document.getElementById(id).addEventListener('input',()=>checkField(id,false));
+});
+
 document.getElementById('next2').addEventListener('click',()=>{
-  const city=document.getElementById('city');
-  if(!city.value.trim()){city.focus();city.style.borderColor='#B4552D';return;}
+  if(!checkField('city',true)){document.getElementById('city').focus();return;}
   showStep(3);
 });
 document.querySelectorAll('.back-link').forEach(b=>b.addEventListener('click',()=>showStep(Number(b.dataset.back))));
 
-document.getElementById('quoteForm').addEventListener('submit',e=>{
+const submitBtn=quoteFormEl.querySelector('button[type="submit"]');
+const statusEl=document.getElementById('formStatus');
+quoteFormEl.addEventListener('submit',async e=>{
   e.preventDefault();
-  const req=['fname','phone','email'];
-  for(const id of req){
-    const el=document.getElementById(id);
-    if(!el.value.trim()){el.focus();el.style.borderColor='#B4552D';return;}
+  statusEl.className='form-status';statusEl.textContent='';
+  let firstBad=null;
+  ['fname','phone','email'].forEach(id=>{
+    if(!checkField(id,true)&&!firstBad)firstBad=document.getElementById(id);
+  });
+  if(firstBad){firstBad.focus();return;}
+  const val=id=>document.getElementById(id).value;
+  const payload={
+    coverage,
+    bizname:val('bizname'),city:val('city'),timeline:val('timeline'),details:val('details'),
+    fname:val('fname'),phone:val('phone'),email:val('email'),pref:val('pref'),
+    website:val('website'),
+    page:'Homepage'
+  };
+  submitBtn.disabled=true;
+  try{
+    const res=await fetch('/api/quote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    showStep('done');
+  }catch(err){
+    statusEl.textContent='Something went wrong sending your request. Please email zach@driftstoneinsurance.com or call 442-359-5633.';
+    statusEl.classList.add('bad');
+  }finally{
+    submitBtn.disabled=false;
   }
-  showStep('done');
 });
 
 // ---- CTA preselect (business/personal buttons jump to form with type chosen) ----

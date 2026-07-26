@@ -111,8 +111,23 @@ section{padding:88px 0}
 .field.invalid input,.field.invalid select{border-color:#B4552D}
 .field.invalid .err-msg{display:block}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.form-foot{margin-top:26px}
-.reassure{font-size:14px;color:var(--stone);margin-top:16px}
+.form-progress{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+.prog-stone{width:34px;height:14px;border-radius:100px;background:var(--sand);transition:background .3s,width .3s}
+.prog-stone.done{background:var(--sea)}
+.prog-stone.active{background:var(--pine);width:52px}
+.prog-label{font-size:13px;font-weight:600;color:var(--stone);margin-left:auto}
+.fstep{display:none}
+.fstep.on{display:block;transition:opacity .25s ease-out}
+#quoteForm.stepping{transition:height .3s ease;overflow:hidden}
+.fstep h3{font-size:24px;color:var(--pine);margin-bottom:22px}
+.form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}
+.back-link{background:none;border:none;font-family:var(--body);font-weight:600;font-size:14.5px;color:var(--stone);cursor:pointer;padding:8px 0}
+.back-link:hover{color:var(--pine)}
+.form-done{text-align:center;padding:30px 10px}
+.form-done svg{width:60px;height:60px;margin:0 auto 20px}
+.form-done h3{font-size:26px;color:var(--pine);margin-bottom:10px}
+.form-done p{color:#3A5254;max-width:42ch;margin:0 auto}
+.hp-field{position:absolute!important;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 .interim{margin-top:22px;padding-top:20px;border-top:1px solid rgba(20,72,74,.14);font-size:14.5px;color:#3A5254}
 .interim a{font-weight:600;color:var(--pine)}
 .form-status{display:none;margin-top:18px;padding:14px 18px;border-radius:11px;font-size:14.5px;font-weight:500}
@@ -307,90 +322,96 @@ footer{background:var(--ink);color:rgba(246,244,236,.75);padding:60px 0 36px;fon
     <h2 class="rv">Let's make sure your coverage can keep up.</h2>
 
     <div class="quote-shell rv">
-      <form id="bizQuoteForm" novalidate>
-        <div class="frow">
-          <div class="field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" autocomplete="name" required>
-            <p class="err-msg">Please enter your name.</p>
+      <div class="form-progress" aria-hidden="true">
+        <div class="prog-stone done" id="ps1"></div>
+        <div class="prog-stone active" id="ps2"></div>
+        <div class="prog-stone" id="ps3"></div>
+        <span class="prog-label" id="progLabel">Step 2 of 3</span>
+      </div>
+
+      <form id="quoteForm" novalidate>
+        <!-- STEP 1 (coverage type) is skipped on this page: business insurance is pre-selected -->
+
+        <!-- STEP 2 -->
+        <div class="fstep on" data-step="2">
+          <h3>Tell us a little more.</h3>
+          <div class="field" id="bizNameField">
+            <label for="bizname">Business name <span style="color:var(--stone);font-weight:400">(if applicable)</span></label>
+            <input type="text" id="bizname" name="bizname" placeholder="e.g. Coastal Builders Inc.">
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" placeholder="e.g. Oceanside" required>
+            </div>
+            <div class="field">
+              <label for="timeline">When do you need coverage?</label>
+              <select id="timeline" name="timeline">
+                <option>As soon as possible</option>
+                <option>Within 30 days</option>
+                <option>At my next renewal</option>
+              </select>
+            </div>
           </div>
           <div class="field">
-            <label for="bizname">Business name</label>
-            <input type="text" id="bizname" name="business_name" autocomplete="organization" required>
-            <p class="err-msg">Please enter your business name.</p>
+            <label for="details">Anything we should know?</label>
+            <textarea id="details" name="details" rows="3" placeholder="Current carrier, what you do, number of vehicles or employees — whatever's useful."></textarea>
+          </div>
+          <div class="form-nav">
+            <span></span>
+            <button type="button" class="btn" id="next2">Continue</button>
           </div>
         </div>
-        <div class="frow">
+
+        <!-- STEP 3 -->
+        <div class="fstep" data-step="3">
+          <h3>Where should we send your options?</h3>
+          <div class="frow">
+            <div class="field">
+              <label for="fname">Name</label>
+              <input type="text" id="fname" name="fname" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" inputmode="tel" required>
+              <p class="err-msg">Please enter a valid 10-digit phone number.</p>
+            </div>
+          </div>
           <div class="field">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
+            <input type="email" id="email" name="email" required>
             <p class="err-msg">Please enter a valid email address.</p>
           </div>
           <div class="field">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" required>
-            <p class="err-msg">Please enter a phone number.</p>
-          </div>
-        </div>
-        <div class="frow">
-          <div class="field">
-            <label for="city">California city</label>
-            <input type="text" id="city" name="city" placeholder="e.g. Oceanside" required>
-            <p class="err-msg">Please enter your city.</p>
-          </div>
-          <div class="field">
-            <label for="industry">Industry</label>
-            <select id="industry" name="industry" required>
-              <option value="">Select an industry&hellip;</option>
-              <option>Construction &amp; trades</option>
-              <option>Restaurants &amp; hospitality</option>
-              <option>Professional services</option>
-              <option>Retail &amp; e-commerce</option>
-              <option>Real estate &amp; property</option>
-              <option>Transportation &amp; logistics</option>
-              <option>Other</option>
-            </select>
-            <p class="err-msg">Please select an industry.</p>
-          </div>
-        </div>
-        <div class="frow">
-          <div class="field">
-            <label for="employees">Number of employees</label>
-            <select id="employees" name="employees">
-              <option>Just me</option>
-              <option>2&ndash;10</option>
-              <option>11&ndash;25</option>
-              <option>26&ndash;50</option>
-              <option>51+</option>
+            <label for="pref">Preferred contact</label>
+            <select id="pref" name="pref">
+              <option>Call me</option>
+              <option>Text me</option>
+              <option>Email me</option>
             </select>
           </div>
-          <div class="field">
-            <label for="coverage-needed">Coverage needed</label>
-            <select id="coverage-needed" name="coverage_needed">
-              <option>Not sure yet — help me figure it out</option>
-              <option>General liability</option>
-              <option>Workers' compensation</option>
-              <option>Business owner's policy (BOP)</option>
-              <option>Commercial auto</option>
-              <option>Professional liability / E&amp;O</option>
-              <option>Cyber liability</option>
-              <option>Full program — multiple lines</option>
-            </select>
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
           </div>
-        </div>
-        <div class="field">
-          <label for="renewal">Current policy renewal date <span style="color:var(--stone);font-weight:400">(if you have one)</span></label>
-          <input type="date" id="renewal" name="renewal_date">
-        </div>
-        <div class="field">
-          <label for="message">Brief message</label>
-          <textarea id="message" name="message" rows="3" placeholder="What does the business do day to day? Anything a carrier should know?"></textarea>
-        </div>
-        <div class="form-foot">
-          <button type="submit" class="btn">Start my business quote</button>
-          <p class="privacy-note">By submitting, you agree to our <a href="/privacy.html">Privacy Policy</a>.</p>
-          <p class="reassure">No obligation. No spam. Just a conversation about coverage that fits.</p>
+          <div class="form-nav">
+            <button type="button" class="back-link" data-back="2">&larr; Back</button>
+            <button type="submit" class="btn">Request my quote</button>
+          </div>
           <p class="form-status" id="formStatus" role="status"></p>
+          <p class="privacy-note">By submitting, you agree to our <a href="/privacy.html">Privacy Policy</a>.</p>
+        </div>
+
+        <!-- DONE -->
+        <div class="fstep" data-step="done">
+          <div class="form-done">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <circle cx="32" cy="32" r="30" fill="#EEF3EE" stroke="#2C7A74" stroke-width="2"/>
+              <path d="M20 33l8 8 16-17" stroke="#14484A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>Thank you — request received.</h3>
+            <p>We'll review your details and reach out with your options — usually within one business day.</p>
+          </div>
         </div>
       </form>
       <p class="interim">Prefer to skip the form? Email <a href="mailto:zach@driftstoneinsurance.com">zach@driftstoneinsurance.com</a> or call <a href="tel:+14423595633">442-359-5633</a> directly.</p>
@@ -548,64 +569,117 @@ const io=new IntersectionObserver(es=>{
 },{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-// ---- Quote form ----
-// TODO — WIRE TO FORMSPREE BEFORE RELYING ON THIS FORM:
-//   1. Create a free form at https://formspree.io (log in with zach@driftstoneinsurance.com).
-//   2. Formspree gives you an endpoint like: https://formspree.io/f/abcdwxyz
-//   3. Paste that endpoint into FORMSPREE_ENDPOINT below (keep the quotes).
-//   That's the only change needed — the fetch code below already POSTs the form
-//   to Formspree and shows success/error states.
-// Until the endpoint is set, submitting opens the visitor's email app with the
-// form contents pre-filled and addressed to zach@driftstoneinsurance.com, so no
-// request is ever lost.
-const FORMSPREE_ENDPOINT="";
+// ---- Multi-step quote form (business insurance pre-selected; step 1 skipped) ----
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const coverage='business';
+const steps=document.querySelectorAll('.fstep');
+const stones={1:document.getElementById('ps1'),2:document.getElementById('ps2'),3:document.getElementById('ps3')};
+const progLabel=document.getElementById('progLabel');
 
-const form=document.getElementById('bizQuoteForm');
-const statusEl=document.getElementById('formStatus');
+const quoteFormEl=document.getElementById('quoteForm');
+let stepSeq=0;
 
-function validate(){
-  let firstBad=null;
-  form.querySelectorAll('.field').forEach(f=>{
-    const input=f.querySelector('input[required],select[required]');
-    if(!input)return;
-    const bad=!input.value.trim()||(input.type==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value));
-    f.classList.toggle('invalid',bad);
-    if(bad&&!firstBad)firstBad=input;
-  });
-  if(firstBad)firstBad.focus();
-  return !firstBad;
-}
-form.querySelectorAll('input,select').forEach(el=>{
-  el.addEventListener('input',()=>el.closest('.field').classList.remove('invalid'));
-});
-
-form.addEventListener('submit',async e=>{
-  e.preventDefault();
-  statusEl.className='form-status';
-  if(!validate())return;
-  const data=new FormData(form);
-
-  if(FORMSPREE_ENDPOINT){
-    try{
-      const res=await fetch(FORMSPREE_ENDPOINT,{method:'POST',body:data,headers:{'Accept':'application/json'}});
-      if(!res.ok)throw new Error();
-      form.reset();
-      statusEl.textContent="Request received. We'll be in touch — usually within one business day.";
-      statusEl.classList.add('ok');
-    }catch{
-      statusEl.textContent="Something went wrong sending your request. Please email zach@driftstoneinsurance.com or call 442-359-5633.";
-      statusEl.classList.add('bad');
-    }
+function setStep(n){
+  steps.forEach(s=>s.classList.toggle('on',s.dataset.step==String(n)));
+  if(n==='done'){
+    Object.values(stones).forEach(s=>{s.classList.remove('active');s.classList.add('done');});
+    progLabel.textContent='Done';
     return;
   }
+  for(let i=1;i<=3;i++){
+    stones[i].classList.toggle('done',i<n);
+    stones[i].classList.toggle('active',i===n);
+  }
+  progLabel.textContent='Step '+n+' of 3';
+}
 
-  // Interim path (no endpoint configured yet): open a pre-filled email draft.
-  const lines=[];
-  for(const[k,v]of data.entries())if(v)lines.push(k.replace(/_/g,' ')+': '+v);
-  const subject='Business quote request — '+(data.get('business_name')||data.get('name'));
-  window.location.href='mailto:zach@driftstoneinsurance.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
-  statusEl.textContent="We've opened an email draft with your details — hit send and we'll take it from there. If nothing opened, email zach@driftstoneinsurance.com directly.";
-  statusEl.classList.add('ok');
+// Presentation-only wrapper around setStep: fades the outgoing step out,
+// swaps, fades the incoming step in, and eases the form height between them.
+function showStep(n){
+  const seq=++stepSeq;
+  const from=document.querySelector('.fstep.on');
+  const to=document.querySelector('.fstep[data-step="'+String(n)+'"]');
+  if(reduceMotion||!from||!to||from===to){setStep(n);return;}
+  const h0=quoteFormEl.offsetHeight;
+  quoteFormEl.classList.add('stepping');
+  quoteFormEl.style.height=h0+'px';
+  from.style.opacity='0';
+  setTimeout(()=>{
+    if(seq!==stepSeq)return;
+    from.style.opacity='';
+    to.style.opacity='0';
+    setStep(n);
+    quoteFormEl.style.height='';
+    const h1=quoteFormEl.offsetHeight;
+    quoteFormEl.style.height=h0+'px';
+    void quoteFormEl.offsetHeight;
+    quoteFormEl.style.height=h1+'px';
+    to.style.opacity='';
+    setTimeout(()=>{
+      if(seq!==stepSeq)return;
+      quoteFormEl.style.height='';
+      quoteFormEl.classList.remove('stepping');
+    },320);
+  },260);
+}
+
+// ---- Field validation ----
+const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+const validators={
+  city:v=>!!v.trim(),
+  fname:v=>!!v.trim(),
+  phone:v=>{const d=v.replace(/\D/g,'');return d.length===10||(d.length===11&&d[0]==='1');},
+  email:v=>EMAIL_RE.test(v.trim())
+};
+function checkField(id,show){
+  const el=document.getElementById(id);
+  const ok=validators[id](el.value);
+  // "show" reveals a new error (on blur/submit); otherwise only clear once valid
+  if(show||ok)el.closest('.field').classList.toggle('invalid',!ok);
+  return ok;
+}
+['phone','email'].forEach(id=>{
+  document.getElementById(id).addEventListener('blur',()=>checkField(id,true));
+});
+Object.keys(validators).forEach(id=>{
+  document.getElementById(id).addEventListener('input',()=>checkField(id,false));
+});
+
+document.getElementById('next2').addEventListener('click',()=>{
+  if(!checkField('city',true)){document.getElementById('city').focus();return;}
+  showStep(3);
+});
+document.querySelectorAll('.back-link').forEach(b=>b.addEventListener('click',()=>showStep(Number(b.dataset.back))));
+
+const submitBtn=quoteFormEl.querySelector('button[type="submit"]');
+const statusEl=document.getElementById('formStatus');
+quoteFormEl.addEventListener('submit',async e=>{
+  e.preventDefault();
+  statusEl.className='form-status';statusEl.textContent='';
+  let firstBad=null;
+  ['fname','phone','email'].forEach(id=>{
+    if(!checkField(id,true)&&!firstBad)firstBad=document.getElementById(id);
+  });
+  if(firstBad){firstBad.focus();return;}
+  const val=id=>document.getElementById(id).value;
+  const payload={
+    coverage,
+    bizname:val('bizname'),city:val('city'),timeline:val('timeline'),details:val('details'),
+    fname:val('fname'),phone:val('phone'),email:val('email'),pref:val('pref'),
+    website:val('website'),
+    page:'Business insurance page'
+  };
+  submitBtn.disabled=true;
+  try{
+    const res=await fetch('/api/quote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    showStep('done');
+  }catch(err){
+    statusEl.textContent='Something went wrong sending your request. Please email zach@driftstoneinsurance.com or call 442-359-5633.';
+    statusEl.classList.add('bad');
+  }finally{
+    submitBtn.disabled=false;
+  }
 });
 </script>
 </body>
