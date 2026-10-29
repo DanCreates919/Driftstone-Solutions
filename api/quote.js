@@ -79,7 +79,7 @@ module.exports = async (req, res) => {
   } catch (err) {
     return res.status(502).json({
       ok: false,
-      error: 'Could not deliver your request. Please email ' + LEAD_TO + ' or call 442-359-5633.',
+      error: 'Could not deliver your request. Please email ' + LEAD_TO + ' or call 442-359-5632.',
     });
   }
 
@@ -94,7 +94,7 @@ module.exports = async (req, res) => {
         'Hi ' + fname + ',\n\n' +
         "Thanks for reaching out — your quote request is in. We'll review your details " +
         'and get back to you with options from carriers that fit, usually within one business day.\n\n' +
-        'If anything is time-sensitive, call us at 442-359-5633.\n\n' +
+        'If anything is time-sensitive, call us at 442-359-5632.\n\n' +
         'Driftstone Insurance Solutions\n' +
         'Independent insurance · North County San Diego\n' +
         'CA License #4168429',
